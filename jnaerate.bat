@@ -1,0 +1,1 @@
+java -jar ./tools/jnaerator.jar dmp40j.config.win.jnaerator
