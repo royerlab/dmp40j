@@ -1,0 +1,20 @@
+-library TLDFM_64
+#-beautifyNames
+-f
+-o src/
+-rootPackage src
+-package dmp40j.bindings
+-arch win64 
+-libFile lib/dmp40/TLDFM_64.lib 
+-dependencies TLDFM_64.dll
+-runtime BridJ
+-mode Directory
+lib/dmp40/TLDFM.h
+
+
+#GdiPlus.dll
+ 
+
+
+
+  
