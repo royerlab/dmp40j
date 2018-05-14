@@ -3,9 +3,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import org.bridj.BridJ;
 import org.bridj.CRuntime;
+import org.bridj.Callback;
 import org.bridj.FlagSet;
 import org.bridj.IntValuedEnum;
 import org.bridj.Pointer;
+import org.bridj.ann.Convention.Style;
+import org.bridj.ann.Convention;
 import org.bridj.ann.Library;
 import org.bridj.ann.Ptr;
 import org.bridj.ann.Runtime;
@@ -15,7 +18,7 @@ import org.bridj.ann.Runtime;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> or <a href="http://bridj.googlecode.com/">BridJ</a> .
  */
-@Library(value = "TLDFM_64", dependencies = {"TLDFM_64.dll"}) 
+@Library(value = "TLDFM_64", dependencies = {"lib/dmp40/TLDFM_64.dll"}) 
 @Runtime(CRuntime.class) 
 public class TLDFM_64Library {
 	static {
@@ -64,6 +67,137 @@ public class TLDFM_64Library {
 			return FlagSet.fromValue(value, values());
 		}
 	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : lib\dmp40\TLDFMX_def.h</i>
+	 */
+	public enum TLDFMX_self_test_flag_t implements IntValuedEnum<TLDFMX_self_test_flag_t > {
+		ST_No_Data_Flag(((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x01)),
+		ST_Initialized_Flag(0x0001),
+		ST_IsFactoryPattern_Flag(0x0002),
+		/** = ST_Initialized_Flag | ST_IsFactoryPattern_Flag */
+		ST_IsFactorySettings_Flag(0x0003),
+		ST_Flipped_Flag(0x0004),
+		ST_Rotated_Flag(0x0008),
+		ST_Offset_Applied_Flag(0x0010),
+		ST_System_Measuret_Flag(0x0020);
+		TLDFMX_self_test_flag_t(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<TLDFMX_self_test_flag_t > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<TLDFMX_self_test_flag_t > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : lib\dmp40\TLDFMX_def.h</i>
+	 */
+	public enum TLDFMX_rotation_flag_t implements IntValuedEnum<TLDFMX_rotation_flag_t > {
+		R_None_Flag(0x00000000),
+		R_45Deg_Flag(0x00000001),
+		R_90Deg_Flag(0x00000002),
+		R_135Deg_Flag(0x00000003);
+		TLDFMX_rotation_flag_t(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<TLDFMX_rotation_flag_t > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<TLDFMX_rotation_flag_t > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : lib\dmp40\TLDFMX_def.h</i>
+	 */
+	public enum TLDFMX_flip_flag_t implements IntValuedEnum<TLDFMX_flip_flag_t > {
+		F_None_Flag(0x00000000),
+		F_Horizontal_Flag(0x00000001),
+		F_Vertical_Flag(0x00000002),
+		F_Hor_Ver_Flag(0x00000003);
+		TLDFMX_flip_flag_t(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<TLDFMX_flip_flag_t > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<TLDFMX_flip_flag_t > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : lib\dmp40\TLDFMX_def.h</i>
+	 */
+	public enum TLDFMX_zernike_flag_t implements IntValuedEnum<TLDFMX_zernike_flag_t > {
+		Z_None_Flag(0x00000000),
+		Z_Ast45_Flag(0x00000001),
+		Z_Def_Flag(0x00000002),
+		Z_Ast0_Flag(0x00000004),
+		Z_TreY_Flag(0x00000008),
+		Z_ComX_Flag(0x00000010),
+		Z_ComY_Flag(0x00000020),
+		Z_TreX_Flag(0x00000040),
+		Z_TetY_Flag(0x00000080),
+		Z_SAstY_Flag(0x00000100),
+		Z_SAb3_Flag(0x00000200),
+		Z_SAstX_Flag(0x00000400),
+		Z_TetX_Flag(0x00000800),
+		Z_All_Flag(0xFFFFFFFFL);
+		TLDFMX_zernike_flag_t(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<TLDFMX_zernike_flag_t > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<TLDFMX_zernike_flag_t > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/** <i>native declaration : lib\dmp40\visatype.h</i> */
+	public static final int _VI_ERROR = (int)(-2147483647 - 1);
+	/**
+	 * define<br>
+	 * Conversion Error : null<br>
+	 * SKIPPED:<br>
+	 * <i>native declaration : lib\dmp40\visatype.h</i><br>
+	 * *
+	 */
+	/** <i>native declaration : lib\dmp40\visatype.h</i> */
+	public static final int VI_SUCCESS = (int)(0);
+	/** <i>native declaration : lib\dmp40\visatype.h</i> */
+	public static final int VI_NULL = (int)(0);
+	/** <i>native declaration : lib\dmp40\visatype.h</i> */
+	public static final int VI_TRUE = (int)(1);
+	/** <i>native declaration : lib\dmp40\visatype.h</i> */
+	public static final int VI_FALSE = (int)(0);
+	/**
+	 * define<br>
+	 * Conversion Error : null<br>
+	 * SKIPPED:<br>
+	 * <i>native declaration : lib\dmp40\visatype.h</i><br>
+	 * *
+	 */
 	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
 	public static final String TLDFM_VI_FIND_RSC_PATTERN = (String)"USB?*?{VI_ATTR_MANF_ID==0x1313 && VI_ATTR_MODEL_CODE==0x8016}";
 	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
@@ -80,6 +214,52 @@ public class TLDFM_64Library {
 	public static final int TLDFM_ERR_DESCR_BUFER_SIZE = (int)512;
 	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
 	public static final int TLDFM_INSTR_WARNING_OFFSET = (int)0x3FFC0900;
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_INSTR_ERROR_OFFSET = (int)((-2147483647 - 1) + 0x3FFC0900);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_USBCOMM_OFFSET = (int)((-2147483647 - 1) + 0x3FFC0B00);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_HEAD_ERR = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x01);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_HEAD_ERR_CMD = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x02);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_HEAD_ERR_CMD_DIR = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x03);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_HEAD_ERR_BYTE_CNT = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x04);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_HEAD_ERR_DATA_RANGE = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x05);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_HEAD_ERR_NO_MULT_SAMPLE = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x06);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_HEAD_ERR_ALLREADY_RUNNING = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x07);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_HEAD_ERR_NO_ACCESS = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x08);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_CHECKSUM = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x09);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERR_CONF_UNAVAILABLE = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x0A);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERR_HYST_UNAVAILABLE = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x0B);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_EXTERNAL_PWR = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x0C);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_INTERNAL_PWR = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x0D);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_OHT_EL = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x0E);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_OHT_HV_IC = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x0F);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_OHT_HV_MI = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x10);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_UNKNOWN_TARGET = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x21);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_NOSUP_TARGET = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x22);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int VI_ERROR_PARAMETER9 = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0x99);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_NO_ERROR = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0xFE);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static final int TLDFM_ERROR_UNKNOWN = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0xFF);
 	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
 	public static final int TLDFM_WARNING_TEMP_ELECTRIC = (int)(0x3FFC0900 + 0x00);
 	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
@@ -100,575 +280,2677 @@ public class TLDFM_64Library {
 	public static final int T_TILT = (int)(1);
 	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
 	public static final int T_BOTH = (int)(2);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERR_DESCR_BUFER_SIZE = (int)(512);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_WARNING = (int)(0x3FFC0100);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR = (int)(-2147483647 - 1);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_OFFSET = (int)(((-2147483647 - 1) + 0x3FFC0900) + 0xFF);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_NODATA = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x01);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_NOTINIT = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x02);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_NOSUP_TARGET = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x03);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_ITERATION = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x04);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_ITER_AMPL = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x05);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_ITER_CROSS_AMPL = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x06);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_ITER_DATA_INV = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x07);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_AMPL_CONVERT = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x08);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_AMPL_RANGE = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0x09);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_ERROR_UNKNOWN = (int)((((-2147483647 - 1) + 0x3FFC0900) + 0xFF) + 0xFF);
+	/** <i>native declaration : lib\dmp40\TLDFMX_def.h</i> */
+	public static final int TLDFMX_MAX_ZERNIKE_TERMS = (int)(12);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SPEC_VERSION = (int)(0x00500100);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RSRC_CLASS = (int)(0xBFFF0001);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RSRC_NAME = (int)(0xBFFF0002);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RSRC_IMPL_VERSION = (int)(0x3FFF0003);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RSRC_LOCK_STATE = (int)(0x3FFF0004);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MAX_QUEUE_LENGTH = (int)(0x3FFF0005);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USER_DATA_32 = (int)(0x3FFF0007);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FDC_CHNL = (int)(0x3FFF000D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FDC_MODE = (int)(0x3FFF000F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FDC_GEN_SIGNAL_EN = (int)(0x3FFF0011);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FDC_USE_PAIR = (int)(0x3FFF0013);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_SEND_END_EN = (int)(0x3FFF0016);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TERMCHAR = (int)(0x3FFF0018);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TMO_VALUE = (int)(0x3FFF001A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_READDR_EN = (int)(0x3FFF001B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_IO_PROT = (int)(0x3FFF001C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_DMA_ALLOW_EN = (int)(0x3FFF001E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_BAUD = (int)(0x3FFF0021);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_DATA_BITS = (int)(0x3FFF0022);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_PARITY = (int)(0x3FFF0023);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_STOP_BITS = (int)(0x3FFF0024);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_FLOW_CNTRL = (int)(0x3FFF0025);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RD_BUF_OPER_MODE = (int)(0x3FFF002A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RD_BUF_SIZE = (int)(0x3FFF002B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WR_BUF_OPER_MODE = (int)(0x3FFF002D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WR_BUF_SIZE = (int)(0x3FFF002E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_SUPPRESS_END_EN = (int)(0x3FFF0036);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TERMCHAR_EN = (int)(0x3FFF0038);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_DEST_ACCESS_PRIV = (int)(0x3FFF0039);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_DEST_BYTE_ORDER = (int)(0x3FFF003A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_SRC_ACCESS_PRIV = (int)(0x3FFF003C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_SRC_BYTE_ORDER = (int)(0x3FFF003D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_SRC_INCREMENT = (int)(0x3FFF0040);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_DEST_INCREMENT = (int)(0x3FFF0041);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WIN_ACCESS_PRIV = (int)(0x3FFF0045);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WIN_BYTE_ORDER = (int)(0x3FFF0047);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_ATN_STATE = (int)(0x3FFF0057);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_ADDR_STATE = (int)(0x3FFF005C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_CIC_STATE = (int)(0x3FFF005E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_NDAC_STATE = (int)(0x3FFF0062);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_SRQ_STATE = (int)(0x3FFF0067);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_SYS_CNTRL_STATE = (int)(0x3FFF0068);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_HS488_CBL_LEN = (int)(0x3FFF0069);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_CMDR_LA = (int)(0x3FFF006B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_DEV_CLASS = (int)(0x3FFF006C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MAINFRAME_LA = (int)(0x3FFF0070);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MANF_NAME = (int)(0xBFFF0072);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MODEL_NAME = (int)(0xBFFF0077);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_VME_INTR_STATUS = (int)(0x3FFF008B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_TRIG_STATUS = (int)(0x3FFF008D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_VME_SYSFAIL_STATE = (int)(0x3FFF0094);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WIN_BASE_ADDR_32 = (int)(0x3FFF0098);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WIN_SIZE_32 = (int)(0x3FFF009A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_AVAIL_NUM = (int)(0x3FFF00AC);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MEM_BASE_32 = (int)(0x3FFF00AD);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_CTS_STATE = (int)(0x3FFF00AE);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_DCD_STATE = (int)(0x3FFF00AF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_DSR_STATE = (int)(0x3FFF00B1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_DTR_STATE = (int)(0x3FFF00B2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_END_IN = (int)(0x3FFF00B3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_END_OUT = (int)(0x3FFF00B4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_REPLACE_CHAR = (int)(0x3FFF00BE);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_RI_STATE = (int)(0x3FFF00BF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_RTS_STATE = (int)(0x3FFF00C0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_XON_CHAR = (int)(0x3FFF00C1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_XOFF_CHAR = (int)(0x3FFF00C2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WIN_ACCESS = (int)(0x3FFF00C3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RM_SESSION = (int)(0x3FFF00C4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_LA = (int)(0x3FFF00D5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MANF_ID = (int)(0x3FFF00D9);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MEM_SIZE_32 = (int)(0x3FFF00DD);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MEM_SPACE = (int)(0x3FFF00DE);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MODEL_CODE = (int)(0x3FFF00DF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_SLOT = (int)(0x3FFF00E8);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_INTF_INST_NAME = (int)(0xBFFF00E9);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_IMMEDIATE_SERV = (int)(0x3FFF0100);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_INTF_PARENT_NUM = (int)(0x3FFF0101);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RSRC_SPEC_VERSION = (int)(0x3FFF0170);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_INTF_TYPE = (int)(0x3FFF0171);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_PRIMARY_ADDR = (int)(0x3FFF0172);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_SECONDARY_ADDR = (int)(0x3FFF0173);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RSRC_MANF_NAME = (int)(0xBFFF0174);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RSRC_MANF_ID = (int)(0x3FFF0175);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_INTF_NUM = (int)(0x3FFF0176);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TRIG_ID = (int)(0x3FFF0177);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_REN_STATE = (int)(0x3FFF0181);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_UNADDR_EN = (int)(0x3FFF0184);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_DEV_STATUS_BYTE = (int)(0x3FFF0189);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FILE_APPEND_EN = (int)(0x3FFF0192);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_TRIG_SUPPORT = (int)(0x3FFF0194);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_ADDR = (int)(0xBFFF0195);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_HOSTNAME = (int)(0xBFFF0196);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_PORT = (int)(0x3FFF0197);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_DEVICE_NAME = (int)(0xBFFF0199);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_NODELAY = (int)(0x3FFF019A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_KEEPALIVE = (int)(0x3FFF019B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_4882_COMPLIANT = (int)(0x3FFF019F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_SERIAL_NUM = (int)(0xBFFF01A0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_INTFC_NUM = (int)(0x3FFF01A1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_PROTOCOL = (int)(0x3FFF01A7);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_MAX_INTR_SIZE = (int)(0x3FFF01AF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_DEV_NUM = (int)(0x3FFF0201);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_FUNC_NUM = (int)(0x3FFF0202);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_BUS_NUM = (int)(0x3FFF0205);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_CHASSIS = (int)(0x3FFF0206);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_SLOTPATH = (int)(0xBFFF0207);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_SLOT_LBUS_LEFT = (int)(0x3FFF0208);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_SLOT_LBUS_RIGHT = (int)(0x3FFF0209);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_TRIG_BUS = (int)(0x3FFF020A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_STAR_TRIG_BUS = (int)(0x3FFF020B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_STAR_TRIG_LINE = (int)(0x3FFF020C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_SRC_TRIG_BUS = (int)(0x3FFF020D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_DEST_TRIG_BUS = (int)(0x3FFF020E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_TYPE_BAR0 = (int)(0x3FFF0211);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_TYPE_BAR1 = (int)(0x3FFF0212);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_TYPE_BAR2 = (int)(0x3FFF0213);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_TYPE_BAR3 = (int)(0x3FFF0214);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_TYPE_BAR4 = (int)(0x3FFF0215);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_TYPE_BAR5 = (int)(0x3FFF0216);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR0_32 = (int)(0x3FFF0221);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR1_32 = (int)(0x3FFF0222);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR2_32 = (int)(0x3FFF0223);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR3_32 = (int)(0x3FFF0224);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR4_32 = (int)(0x3FFF0225);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR5_32 = (int)(0x3FFF0226);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR0_64 = (int)(0x3FFF0228);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR1_64 = (int)(0x3FFF0229);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR2_64 = (int)(0x3FFF022A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR3_64 = (int)(0x3FFF022B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR4_64 = (int)(0x3FFF022C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR5_64 = (int)(0x3FFF022D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR0_32 = (int)(0x3FFF0231);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR1_32 = (int)(0x3FFF0232);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR2_32 = (int)(0x3FFF0233);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR3_32 = (int)(0x3FFF0234);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR4_32 = (int)(0x3FFF0235);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR5_32 = (int)(0x3FFF0236);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR0_64 = (int)(0x3FFF0238);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR1_64 = (int)(0x3FFF0239);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR2_64 = (int)(0x3FFF023A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR3_64 = (int)(0x3FFF023B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR4_64 = (int)(0x3FFF023C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR5_64 = (int)(0x3FFF023D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_IS_EXPRESS = (int)(0x3FFF0240);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_SLOT_LWIDTH = (int)(0x3FFF0241);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MAX_LWIDTH = (int)(0x3FFF0242);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_ACTUAL_LWIDTH = (int)(0x3FFF0243);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_DSTAR_BUS = (int)(0x3FFF0244);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_DSTAR_SET = (int)(0x3FFF0245);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_ALLOW_WRITE_COMBINE = (int)(0x3FFF0246);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_HISLIP_OVERLAP_EN = (int)(0x3FFF0300);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_HISLIP_VERSION = (int)(0x3FFF0301);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_HISLIP_MAX_MESSAGE_KB = (int)(0x3FFF0302);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_TCPIP_IS_HISLIP = (int)(0x3FFF0303);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_JOB_ID = (int)(0x3FFF4006);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_EVENT_TYPE = (int)(0x3FFF4010);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_SIGP_STATUS_ID = (int)(0x3FFF4011);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RECV_TRIG_ID = (int)(0x3FFF4012);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_INTR_STATUS_ID = (int)(0x3FFF4023);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_STATUS = (int)(0x3FFF4025);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RET_COUNT_32 = (int)(0x3FFF4026);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_BUFFER = (int)(0x3FFF4027);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RECV_INTR_LEVEL = (int)(0x3FFF4041);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_OPER_NAME = (int)(0xBFFF4042);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_GPIB_RECV_CIC_STATE = (int)(0x3FFF4193);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RECV_TCPIP_ADDR = (int)(0xBFFF4198);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_RECV_INTR_SIZE = (int)(0x3FFF41B0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_RECV_INTR_DATA = (int)(0xBFFF41B1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_RECV_INTR_SEQ = (int)(0x3FFF4240);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_RECV_INTR_DATA = (int)(0x3FFF4241);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USER_DATA = (int)(0x3FFF0007);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_RET_COUNT = (int)(0x3FFF4026);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WIN_BASE_ADDR = (int)(0x3FFF0098);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_WIN_SIZE = (int)(0x3FFF009A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MEM_BASE = (int)(0x3FFF00AD);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_MEM_SIZE = (int)(0x3FFF00DD);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR0 = (int)(0x3FFF0221);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR1 = (int)(0x3FFF0222);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR2 = (int)(0x3FFF0223);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR3 = (int)(0x3FFF0224);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR4 = (int)(0x3FFF0225);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_BASE_BAR5 = (int)(0x3FFF0226);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR0 = (int)(0x3FFF0231);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR1 = (int)(0x3FFF0232);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR2 = (int)(0x3FFF0233);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR3 = (int)(0x3FFF0234);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR4 = (int)(0x3FFF0235);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_PXI_MEM_SIZE_BAR5 = (int)(0x3FFF0236);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_IO_COMPLETION = (int)(0x3FFF2009);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_TRIG = (int)(0xBFFF200A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_SERVICE_REQ = (int)(0x3FFF200B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_CLEAR = (int)(0x3FFF200D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_EXCEPTION = (int)(0xBFFF200E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_GPIB_CIC = (int)(0x3FFF2012);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_GPIB_TALK = (int)(0x3FFF2013);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_GPIB_LISTEN = (int)(0x3FFF2014);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_VXI_VME_SYSFAIL = (int)(0x3FFF201D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_VXI_VME_SYSRESET = (int)(0x3FFF201E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_VXI_SIGP = (int)(0x3FFF2020);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_VXI_VME_INTR = (int)(0xBFFF2021);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_PXI_INTR = (int)(0x3FFF2022);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_TCPIP_CONNECT = (int)(0x3FFF2036);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_USB_INTR = (int)(0x3FFF2037);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ALL_ENABLED_EVENTS = (int)(0x3FFF7FFF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_EVENT_EN = (int)(0x3FFF0002);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_EVENT_DIS = (int)(0x3FFF0003);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_QUEUE_EMPTY = (int)(0x3FFF0004);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_TERM_CHAR = (int)(0x3FFF0005);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_MAX_CNT = (int)(0x3FFF0006);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_DEV_NPRESENT = (int)(0x3FFF007D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_TRIG_MAPPED = (int)(0x3FFF007E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_QUEUE_NEMPTY = (int)(0x3FFF0080);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_NCHAIN = (int)(0x3FFF0098);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_NESTED_SHARED = (int)(0x3FFF0099);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_NESTED_EXCLUSIVE = (int)(0x3FFF009A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUCCESS_SYNC = (int)(0x3FFF009B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WARN_QUEUE_OVERFLOW = (int)(0x3FFF000C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WARN_CONFIG_NLOADED = (int)(0x3FFF0077);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WARN_NULL_OBJECT = (int)(0x3FFF0082);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WARN_NSUP_ATTR_STATE = (int)(0x3FFF0084);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WARN_UNKNOWN_STATUS = (int)(0x3FFF0085);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WARN_NSUP_BUF = (int)(0x3FFF0088);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WARN_EXT_FUNC_NIMPL = (int)(0x3FFF00A9);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_SYSTEM_ERROR = (int)((-2147483647 - 1) + 0x3FFF0000);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_OBJECT = (int)((-2147483647 - 1) + 0x3FFF000E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_RSRC_LOCKED = (int)((-2147483647 - 1) + 0x3FFF000F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_EXPR = (int)((-2147483647 - 1) + 0x3FFF0010);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_RSRC_NFOUND = (int)((-2147483647 - 1) + 0x3FFF0011);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_RSRC_NAME = (int)((-2147483647 - 1) + 0x3FFF0012);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_ACC_MODE = (int)((-2147483647 - 1) + 0x3FFF0013);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_TMO = (int)((-2147483647 - 1) + 0x3FFF0015);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_CLOSING_FAILED = (int)((-2147483647 - 1) + 0x3FFF0016);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_DEGREE = (int)((-2147483647 - 1) + 0x3FFF001B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_JOB_ID = (int)((-2147483647 - 1) + 0x3FFF001C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_ATTR = (int)((-2147483647 - 1) + 0x3FFF001D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_ATTR_STATE = (int)((-2147483647 - 1) + 0x3FFF001E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_ATTR_READONLY = (int)((-2147483647 - 1) + 0x3FFF001F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_LOCK_TYPE = (int)((-2147483647 - 1) + 0x3FFF0020);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_ACCESS_KEY = (int)((-2147483647 - 1) + 0x3FFF0021);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_EVENT = (int)((-2147483647 - 1) + 0x3FFF0026);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_MECH = (int)((-2147483647 - 1) + 0x3FFF0027);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_HNDLR_NINSTALLED = (int)((-2147483647 - 1) + 0x3FFF0028);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_HNDLR_REF = (int)((-2147483647 - 1) + 0x3FFF0029);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_CONTEXT = (int)((-2147483647 - 1) + 0x3FFF002A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_QUEUE_OVERFLOW = (int)((-2147483647 - 1) + 0x3FFF002D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NENABLED = (int)((-2147483647 - 1) + 0x3FFF002F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_ABORT = (int)((-2147483647 - 1) + 0x3FFF0030);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_RAW_WR_PROT_VIOL = (int)((-2147483647 - 1) + 0x3FFF0034);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_RAW_RD_PROT_VIOL = (int)((-2147483647 - 1) + 0x3FFF0035);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_OUTP_PROT_VIOL = (int)((-2147483647 - 1) + 0x3FFF0036);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INP_PROT_VIOL = (int)((-2147483647 - 1) + 0x3FFF0037);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_BERR = (int)((-2147483647 - 1) + 0x3FFF0038);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_IN_PROGRESS = (int)((-2147483647 - 1) + 0x3FFF0039);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_SETUP = (int)((-2147483647 - 1) + 0x3FFF003A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_QUEUE_ERROR = (int)((-2147483647 - 1) + 0x3FFF003B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_ALLOC = (int)((-2147483647 - 1) + 0x3FFF003C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_MASK = (int)((-2147483647 - 1) + 0x3FFF003D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_IO = (int)((-2147483647 - 1) + 0x3FFF003E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_FMT = (int)((-2147483647 - 1) + 0x3FFF003F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_FMT = (int)((-2147483647 - 1) + 0x3FFF0041);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_LINE_IN_USE = (int)((-2147483647 - 1) + 0x3FFF0042);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_MODE = (int)((-2147483647 - 1) + 0x3FFF0046);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_SRQ_NOCCURRED = (int)((-2147483647 - 1) + 0x3FFF004A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_SPACE = (int)((-2147483647 - 1) + 0x3FFF004E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_OFFSET = (int)((-2147483647 - 1) + 0x3FFF0051);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_WIDTH = (int)((-2147483647 - 1) + 0x3FFF0052);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_OFFSET = (int)((-2147483647 - 1) + 0x3FFF0054);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_VAR_WIDTH = (int)((-2147483647 - 1) + 0x3FFF0055);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_WINDOW_NMAPPED = (int)((-2147483647 - 1) + 0x3FFF0057);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_RESP_PENDING = (int)((-2147483647 - 1) + 0x3FFF0059);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NLISTENERS = (int)((-2147483647 - 1) + 0x3FFF005F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NCIC = (int)((-2147483647 - 1) + 0x3FFF0060);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSYS_CNTLR = (int)((-2147483647 - 1) + 0x3FFF0061);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_OPER = (int)((-2147483647 - 1) + 0x3FFF0067);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INTR_PENDING = (int)((-2147483647 - 1) + 0x3FFF0068);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_ASRL_PARITY = (int)((-2147483647 - 1) + 0x3FFF006A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_ASRL_FRAMING = (int)((-2147483647 - 1) + 0x3FFF006B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_ASRL_OVERRUN = (int)((-2147483647 - 1) + 0x3FFF006C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_TRIG_NMAPPED = (int)((-2147483647 - 1) + 0x3FFF006E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_ALIGN_OFFSET = (int)((-2147483647 - 1) + 0x3FFF0070);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_USER_BUF = (int)((-2147483647 - 1) + 0x3FFF0071);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_RSRC_BUSY = (int)((-2147483647 - 1) + 0x3FFF0072);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_WIDTH = (int)((-2147483647 - 1) + 0x3FFF0076);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_PARAMETER = (int)((-2147483647 - 1) + 0x3FFF0078);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_PROT = (int)((-2147483647 - 1) + 0x3FFF0079);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_SIZE = (int)((-2147483647 - 1) + 0x3FFF007B);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_WINDOW_MAPPED = (int)((-2147483647 - 1) + 0x3FFF0080);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NIMPL_OPER = (int)((-2147483647 - 1) + 0x3FFF0081);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_LENGTH = (int)((-2147483647 - 1) + 0x3FFF0083);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_MODE = (int)((-2147483647 - 1) + 0x3FFF0091);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_SESN_NLOCKED = (int)((-2147483647 - 1) + 0x3FFF009C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_MEM_NSHARED = (int)((-2147483647 - 1) + 0x3FFF009D);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_LIBRARY_NFOUND = (int)((-2147483647 - 1) + 0x3FFF009E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_INTR = (int)((-2147483647 - 1) + 0x3FFF009F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_LINE = (int)((-2147483647 - 1) + 0x3FFF00A0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_FILE_ACCESS = (int)((-2147483647 - 1) + 0x3FFF00A1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_FILE_IO = (int)((-2147483647 - 1) + 0x3FFF00A2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_LINE = (int)((-2147483647 - 1) + 0x3FFF00A3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NSUP_MECH = (int)((-2147483647 - 1) + 0x3FFF00A4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INTF_NUM_NCONFIG = (int)((-2147483647 - 1) + 0x3FFF00A5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_CONN_LOST = (int)((-2147483647 - 1) + 0x3FFF00A6);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_MACHINE_NAVAIL = (int)((-2147483647 - 1) + 0x3FFF00A7);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_NPERMISSION = (int)((-2147483647 - 1) + 0x3FFF00A8);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_FIND_BUFLEN = (int)(256);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_GPIB = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_VXI = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_GPIB_VXI = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_ASRL = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_PXI = (int)(5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_TCPIP = (int)(6);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_USB = (int)(7);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PROT_NORMAL = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PROT_FDC = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PROT_HS488 = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PROT_4882_STRS = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PROT_USBTMC_VENDOR = (int)(5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_FDC_NORMAL = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_FDC_STREAM = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_LOCAL_SPACE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_A16_SPACE = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_A24_SPACE = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_A32_SPACE = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_A64_SPACE = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_ALLOC_SPACE = (int)(9);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_CFG_SPACE = (int)(10);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_BAR0_SPACE = (int)(11);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_BAR1_SPACE = (int)(12);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_BAR2_SPACE = (int)(13);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_BAR3_SPACE = (int)(14);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_BAR4_SPACE = (int)(15);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_BAR5_SPACE = (int)(16);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_OPAQUE_SPACE = (int)(0xFFFF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_UNKNOWN_LA = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_UNKNOWN_SLOT = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_UNKNOWN_LEVEL = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_UNKNOWN_CHASSIS = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_QUEUE = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_HNDLR = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SUSPEND_HNDLR = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ALL_MECH = (int)(0xFFFF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ANY_HNDLR = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_ALL = (int)(-2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_SW = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_TTL0 = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_TTL1 = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_TTL2 = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_TTL3 = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_TTL4 = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_TTL5 = (int)(5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_TTL6 = (int)(6);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_TTL7 = (int)(7);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_ECL0 = (int)(8);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_ECL1 = (int)(9);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_ECL2 = (int)(10);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_ECL3 = (int)(11);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_ECL4 = (int)(12);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_ECL5 = (int)(13);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT1 = (int)(14);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT2 = (int)(15);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT3 = (int)(16);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT4 = (int)(17);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT5 = (int)(18);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT6 = (int)(19);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT7 = (int)(20);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT8 = (int)(21);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT9 = (int)(22);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT10 = (int)(23);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT11 = (int)(24);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_SLOT12 = (int)(25);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_INSTR = (int)(26);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_PANEL_IN = (int)(27);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_PANEL_OUT = (int)(28);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_VXI0 = (int)(29);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_VXI1 = (int)(30);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_STAR_VXI2 = (int)(31);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_PROT_DEFAULT = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_PROT_ON = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_PROT_OFF = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_PROT_SYNC = (int)(5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_PROT_RESERVE = (int)(6);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_PROT_UNRESERVE = (int)(7);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_READ_BUF = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WRITE_BUF = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_READ_BUF_DISCARD = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WRITE_BUF_DISCARD = (int)(8);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_IO_IN_BUF = (int)(16);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_IO_OUT_BUF = (int)(32);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_IO_IN_BUF_DISCARD = (int)(64);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_IO_OUT_BUF_DISCARD = (int)(128);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_FLUSH_ON_ACCESS = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_FLUSH_WHEN_FULL = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_FLUSH_DISABLE = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_NMAPPED = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_USE_OPERS = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_DEREF_ADDR = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_DEREF_ADDR_BYTE_SWAP = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TMO_IMMEDIATE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final long VI_TMO_INFINITE = (long)(0xFFFFFFFFL);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_NO_LOCK = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EXCLUSIVE_LOCK = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_SHARED_LOCK = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_LOAD_CONFIG = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_NO_SEC_ADDR = (int)(0xFFFF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_PAR_NONE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_PAR_ODD = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_PAR_EVEN = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_PAR_MARK = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_PAR_SPACE = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_STOP_ONE = (int)(10);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_STOP_ONE5 = (int)(15);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_STOP_TWO = (int)(20);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_FLOW_NONE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_FLOW_XON_XOFF = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_FLOW_RTS_CTS = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_FLOW_DTR_DSR = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_END_NONE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_END_LAST_BIT = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_END_TERMCHAR = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_END_BREAK = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_STATE_ASSERTED = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_STATE_UNASSERTED = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_STATE_UNKNOWN = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_BIG_ENDIAN = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_LITTLE_ENDIAN = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_DATA_PRIV = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_DATA_NPRIV = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PROG_PRIV = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PROG_NPRIV = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_BLCK_PRIV = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_BLCK_NPRIV = (int)(5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_D64_PRIV = (int)(6);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_D64_NPRIV = (int)(7);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_D64_2EVME = (int)(8);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_D64_SST160 = (int)(9);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_D64_SST267 = (int)(10);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_D64_SST320 = (int)(11);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WIDTH_8 = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WIDTH_16 = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WIDTH_32 = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_WIDTH_64 = (int)(8);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_REN_DEASSERT = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_REN_ASSERT = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_REN_DEASSERT_GTL = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_REN_ASSERT_ADDRESS = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_REN_ASSERT_LLO = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_REN_ASSERT_ADDRESS_LLO = (int)(5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_REN_ADDRESS_GTL = (int)(6);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_ATN_DEASSERT = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_ATN_ASSERT = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_ATN_DEASSERT_HANDSHAKE = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_ATN_ASSERT_IMMEDIATE = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_HS488_DISABLED = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_HS488_NIMPL = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_UNADDRESSED = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_TALKER = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_GPIB_LISTENER = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CMD16 = (int)(0x0200);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CMD16_RESP16 = (int)(0x0202);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_RESP16 = (int)(0x0002);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CMD32 = (int)(0x0400);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CMD32_RESP16 = (int)(0x0402);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CMD32_RESP32 = (int)(0x0404);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_RESP32 = (int)(0x0004);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_SIGNAL = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_USE_ASSIGNED = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_IRQ1 = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_IRQ2 = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_IRQ3 = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_IRQ4 = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_IRQ5 = (int)(5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_IRQ6 = (int)(6);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASSERT_IRQ7 = (int)(7);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_UTIL_ASSERT_SYSRESET = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_UTIL_ASSERT_SYSFAIL = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_UTIL_DEASSERT_SYSFAIL = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CLASS_MEMORY = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CLASS_EXTENDED = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CLASS_MESSAGE = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CLASS_REGISTER = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_CLASS_OTHER = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_ADDR_NONE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_ADDR_MEM = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_ADDR_IO = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_ADDR_CFG = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_TRIG_UNKNOWN = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_UNKNOWN = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_NONE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_0 = (int)(1000);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_1 = (int)(1001);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_2 = (int)(1002);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_3 = (int)(1003);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_4 = (int)(1004);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_5 = (int)(1005);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_6 = (int)(1006);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_7 = (int)(1007);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_8 = (int)(1008);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_LBUS_STAR_TRIG_BUS_9 = (int)(1009);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_PXI_STAR_TRIG_CONTROLLER = (int)(1413);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ERROR_INV_SESSION = (int)((-2147483647 - 1) + 0x3FFF000E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final long VI_INFINITE = (long)(0xFFFFFFFFL);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_NORMAL = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_FDC = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_HS488 = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL488 = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_IN_BUF = (int)(16);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_OUT_BUF = (int)(32);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_IN_BUF_DISCARD = (int)(64);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_OUT_BUF_DISCARD = (int)(128);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_RIO = (int)(8);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_INTF_FIREWIRE = (int)(9);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_SYNC_MXI_ALLOW_EN = (int)(0x3FFF0161);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_VXI_DEV_CMD = (int)(0xBFFF200F);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_DEV_CMD_TYPE = (int)(0x3FFF4037);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_DEV_CMD_VALUE = (int)(0x3FFF4038);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_DEV_CMD_TYPE_16 = (int)(16);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_DEV_CMD_TYPE_32 = (int)(32);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_RESP_NONE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_VXI_RESP_PROT_ERROR = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_TRIG_LINES_EN = (int)(0x3FFF4043);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_VXI_TRIG_DIR = (int)(0x3FFF4044);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_DISCARD_NULL = (int)(0x3FFF00B0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_CONNECTED = (int)(0x3FFF01BB);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_BREAK_STATE = (int)(0x3FFF01BC);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_BREAK_LEN = (int)(0x3FFF01BD);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_ALLOW_TRANSMIT = (int)(0x3FFF01BE);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_ASRL_WIRE_MODE = (int)(0x3FFF01BF);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_WIRE_485_4 = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_WIRE_485_2_DTR_ECHO = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_WIRE_485_2_DTR_CTRL = (int)(2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_WIRE_485_2_AUTO = (int)(3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_WIRE_232_DTE = (int)(128);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_WIRE_232_DCE = (int)(129);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ASRL_WIRE_232_AUTO = (int)(130);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_ASRL_BREAK = (int)(0x3FFF2023);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_ASRL_CTS = (int)(0x3FFF2029);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_ASRL_DSR = (int)(0x3FFF202A);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_ASRL_DCD = (int)(0x3FFF202C);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_ASRL_RI = (int)(0x3FFF202E);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_ASRL_CHAR = (int)(0x3FFF2035);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_EVENT_ASRL_TERMCHAR = (int)(0x3FFF2024);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_BULK_OUT_PIPE = (int)(0x3FFF01A2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_BULK_IN_PIPE = (int)(0x3FFF01A3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_INTR_IN_PIPE = (int)(0x3FFF01A4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_CLASS = (int)(0x3FFF01A5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_SUBCLASS = (int)(0x3FFF01A6);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_ALT_SETTING = (int)(0x3FFF01A8);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_END_IN = (int)(0x3FFF01A9);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_NUM_INTFCS = (int)(0x3FFF01AA);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_NUM_PIPES = (int)(0x3FFF01AB);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_BULK_OUT_STATUS = (int)(0x3FFF01AC);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_BULK_IN_STATUS = (int)(0x3FFF01AD);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_INTR_IN_STATUS = (int)(0x3FFF01AE);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_USB_CTRL_PIPE = (int)(0x3FFF01B0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_USB_PIPE_STATE_UNKNOWN = (int)(-1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_USB_PIPE_READY = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_USB_PIPE_STALLED = (int)(1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_USB_END_NONE = (int)(0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_USB_END_SHORT = (int)(4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_USB_END_SHORT_OR_COUNT = (int)(5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FIREWIRE_DEST_UPPER_OFFSET = (int)(0x3FFF01F0);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FIREWIRE_SRC_UPPER_OFFSET = (int)(0x3FFF01F1);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FIREWIRE_WIN_UPPER_OFFSET = (int)(0x3FFF01F2);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FIREWIRE_VENDOR_ID = (int)(0x3FFF01F3);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FIREWIRE_LOWER_CHIP_ID = (int)(0x3FFF01F4);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_ATTR_FIREWIRE_UPPER_CHIP_ID = (int)(0x3FFF01F5);
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static final int VI_FIREWIRE_DFLT_SPACE = (int)(5);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_WARN_NSUP_ID_QUERY = (int)(0x3FFC0101);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_WARN_NSUP_RESET = (int)(0x3FFC0102);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_WARN_NSUP_SELF_TEST = (int)(0x3FFC0103);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_WARN_NSUP_ERROR_QUERY = (int)(0x3FFC0104);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_WARN_NSUP_REV_QUERY = (int)(0x3FFC0105);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_PARAMETER1 = (int)((-2147483647 - 1) + 0x3FFC0001);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_PARAMETER2 = (int)((-2147483647 - 1) + 0x3FFC0002);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_PARAMETER3 = (int)((-2147483647 - 1) + 0x3FFC0003);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_PARAMETER4 = (int)((-2147483647 - 1) + 0x3FFC0004);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_PARAMETER5 = (int)((-2147483647 - 1) + 0x3FFC0005);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_PARAMETER6 = (int)((-2147483647 - 1) + 0x3FFC0006);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_PARAMETER7 = (int)((-2147483647 - 1) + 0x3FFC0007);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_PARAMETER8 = (int)((-2147483647 - 1) + 0x3FFC0008);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_FAIL_ID_QUERY = (int)((-2147483647 - 1) + 0x3FFC0011);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ERROR_INV_RESPONSE = (int)((-2147483647 - 1) + 0x3FFC0012);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_ON = (int)(1);
+	/** <i>native declaration : lib\dmp40\vpptype.h</i> */
+	public static final int VI_OFF = (int)(0);
+	/** <i>native declaration : lib\dmp40\TLDFM_def.h</i> */
+	public static abstract class StatusUpdate extends Callback<StatusUpdate > {
+		@Convention(Convention.Style.StdCall) 
+		public abstract int apply();
+	};
+	/** <i>native declaration : lib\dmp40\visa.h:56</i> */
+	public static abstract class ViStatus extends Callback<ViStatus > {
+		public TLDFM_64Library.ViStatus_callback apply(Pointer<Integer > ViHndlr) {
+			return apply(Pointer.getPeer(ViHndlr));
+		}
+		public TLDFM_64Library.ViStatus_callback apply(@Ptr long ViHndlr) {
+			return apply((Pointer)Pointer.pointerToAddress(ViHndlr, Integer.class));
+		}
+	};
+	/** <i>native declaration : lib\dmp40\visa.h</i> */
+	public static abstract class ViStatus_callback extends Callback<ViStatus_callback > {
+		public int apply(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, @org.bridj.ann.CLong long event, Pointer<? > userHandle) {
+			return apply(vi, eventType, event, Pointer.getPeer(userHandle));
+		}
+		public int apply(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, @org.bridj.ann.CLong long event, @Ptr long userHandle) {
+			return apply(vi, eventType, event, Pointer.pointerToAddress(userHandle));
+		}
+	};
 	/**
 	 * Global functions<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_get_device_count(ViSession, ViUInt32*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_device_count(ViSession, ViUInt32*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:5</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_device_count(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViUInt32 > pDeviceCount) {
-		return Pointer.pointerToAddress(TLDFM_get_device_count(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pDeviceCount)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_device_count(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pDeviceCount) {
+		return TLDFM_get_device_count(instrumentHandle, Pointer.getPeer(pDeviceCount));
 	}
-	@Ptr
-	protected native static long TLDFM_get_device_count(@Ptr long instrumentHandle, @Ptr long pDeviceCount);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_device_count(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pDeviceCount);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_device_information(ViSession, ViUInt32, ViChar[], ViChar[], ViChar[], ViBoolean*, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_device_information(ViSession, ViUInt32, ViChar[], ViChar[], ViChar[], ViBoolean*, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:8</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_device_information(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 deviceIndex, Pointer<TLDFM_64Library.ViChar > manufacturer, Pointer<TLDFM_64Library.ViChar > instrumentName, Pointer<TLDFM_64Library.ViChar > serialNumber, Pointer<TLDFM_64Library.ViBoolean > pDeviceAvailable, Pointer<TLDFM_64Library.ViChar > resourceName) {
-		return Pointer.pointerToAddress(TLDFM_get_device_information(Pointer.getPeer(instrumentHandle), Pointer.getPeer(deviceIndex), Pointer.getPeer(manufacturer), Pointer.getPeer(instrumentName), Pointer.getPeer(serialNumber), Pointer.getPeer(pDeviceAvailable), Pointer.getPeer(resourceName)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_device_information(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long deviceIndex, Pointer<Byte > manufacturer, Pointer<Byte > instrumentName, Pointer<Byte > serialNumber, Pointer<Short > pDeviceAvailable, Pointer<Byte > resourceName) {
+		return TLDFM_get_device_information(instrumentHandle, deviceIndex, Pointer.getPeer(manufacturer), Pointer.getPeer(instrumentName), Pointer.getPeer(serialNumber), Pointer.getPeer(pDeviceAvailable), Pointer.getPeer(resourceName));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_device_information(@Ptr long instrumentHandle, @Ptr long deviceIndex, @Ptr long manufacturer, @Ptr long instrumentName, @Ptr long serialNumber, @Ptr long pDeviceAvailable, @Ptr long resourceName);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_device_information(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long deviceIndex, @Ptr long manufacturer, @Ptr long instrumentName, @Ptr long serialNumber, @Ptr long pDeviceAvailable, @Ptr long resourceName);
 	/**
 	 * required VXIpnp instrument driver functions<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_init(ViRsrc, ViBoolean, ViBoolean, ViSession*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_init(ViRsrc, ViBoolean, ViBoolean, ViSession*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:19</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_init(TLDFM_64Library.ViRsrc resourceName, TLDFM_64Library.ViBoolean IDQuery, TLDFM_64Library.ViBoolean resetDevice, Pointer<TLDFM_64Library.ViSession > pInstrumentHandle) {
-		return Pointer.pointerToAddress(TLDFM_init(Pointer.getPeer(resourceName), Pointer.getPeer(IDQuery), Pointer.getPeer(resetDevice), Pointer.getPeer(pInstrumentHandle)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_init(Pointer<Byte > resourceName, short IDQuery, short resetDevice, Pointer<org.bridj.CLong > pInstrumentHandle) {
+		return TLDFM_init(Pointer.getPeer(resourceName), IDQuery, resetDevice, Pointer.getPeer(pInstrumentHandle));
 	}
-	@Ptr 
-	protected native static long TLDFM_init(@Ptr long resourceName, @Ptr long IDQuery, @Ptr long resetDevice, @Ptr long pInstrumentHandle);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_init(@Ptr long resourceName, short IDQuery, short resetDevice, @Ptr long pInstrumentHandle);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_close(ViSession)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_close(ViSession)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:24</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_close(TLDFM_64Library.ViSession instrumentHandle) {
-		return Pointer.pointerToAddress(TLDFM_close(Pointer.getPeer(instrumentHandle)));
-	}
-	@Ptr 
-	protected native static long TLDFM_close(@Ptr long instrumentHandle);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_close(@org.bridj.ann.CLong long instrumentHandle);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_reset(ViSession)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_reset(ViSession)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:26</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_reset(TLDFM_64Library.ViSession instrumentHandle) {
-		return Pointer.pointerToAddress(TLDFM_reset(Pointer.getPeer(instrumentHandle)));
-	}
-	@Ptr 
-	protected native static long TLDFM_reset(@Ptr long instrumentHandle);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_reset(@org.bridj.ann.CLong long instrumentHandle);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_self_test(ViSession, ViInt16*, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_self_test(ViSession, ViInt16*, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:28</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_self_test(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViInt16 > pSelfTestResult, Pointer<TLDFM_64Library.ViChar > selfTestMessage) {
-		return Pointer.pointerToAddress(TLDFM_self_test(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pSelfTestResult), Pointer.getPeer(selfTestMessage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_self_test(@org.bridj.ann.CLong long instrumentHandle, Pointer<Short > pSelfTestResult, Pointer<Byte > selfTestMessage) {
+		return TLDFM_self_test(instrumentHandle, Pointer.getPeer(pSelfTestResult), Pointer.getPeer(selfTestMessage));
 	}
-	@Ptr 
-	protected native static long TLDFM_self_test(@Ptr long instrumentHandle, @Ptr long pSelfTestResult, @Ptr long selfTestMessage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_self_test(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pSelfTestResult, @Ptr long selfTestMessage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_error_query(ViSession, ViInt32*, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_error_query(ViSession, ViInt32*, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:32</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_error_query(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViInt32 > pErrorCode, Pointer<TLDFM_64Library.ViChar > errorMessage) {
-		return Pointer.pointerToAddress(TLDFM_error_query(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pErrorCode), Pointer.getPeer(errorMessage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_error_query(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pErrorCode, Pointer<Byte > errorMessage) {
+		return TLDFM_error_query(instrumentHandle, Pointer.getPeer(pErrorCode), Pointer.getPeer(errorMessage));
 	}
-	@Ptr 
-	protected native static long TLDFM_error_query(@Ptr long instrumentHandle, @Ptr long pErrorCode, @Ptr long errorMessage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_error_query(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pErrorCode, @Ptr long errorMessage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_error_message(ViSession, ViStatus, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_error_message(ViSession, ViStatus, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:36</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_error_message(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViStatus errorCode, Pointer<TLDFM_64Library.ViChar > errorMessage) {
-		return Pointer.pointerToAddress(TLDFM_error_message(Pointer.getPeer(instrumentHandle), Pointer.getPeer(errorCode), Pointer.getPeer(errorMessage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_error_message(@org.bridj.ann.CLong long instrumentHandle, TLDFM_64Library.ViStatus errorCode, Pointer<Byte > errorMessage) {
+		return TLDFM_error_message(instrumentHandle, errorCode, Pointer.getPeer(errorMessage));
 	}
-	@Ptr 
-	protected native static long TLDFM_error_message(@Ptr long instrumentHandle, @Ptr long errorCode, @Ptr long errorMessage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_error_message(@org.bridj.ann.CLong long instrumentHandle, TLDFM_64Library.ViStatus errorCode, @Ptr long errorMessage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_revision_query(ViSession, ViChar[], ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_revision_query(ViSession, ViChar[], ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:40</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_revision_query(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > driverRevision, Pointer<TLDFM_64Library.ViChar > firmwareRevision) {
-		return Pointer.pointerToAddress(TLDFM_revision_query(Pointer.getPeer(instrumentHandle), Pointer.getPeer(driverRevision), Pointer.getPeer(firmwareRevision)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_revision_query(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > driverRevision, Pointer<Byte > firmwareRevision) {
+		return TLDFM_revision_query(instrumentHandle, Pointer.getPeer(driverRevision), Pointer.getPeer(firmwareRevision));
 	}
-	@Ptr 
-	protected native static long TLDFM_revision_query(@Ptr long instrumentHandle, @Ptr long driverRevision, @Ptr long firmwareRevision);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_revision_query(@org.bridj.ann.CLong long instrumentHandle, @Ptr long driverRevision, @Ptr long firmwareRevision);
 	/**
 	 * ******************************************************************************<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_set_USB_access_mode(ViSession, ViUInt32, ViString, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_USB_access_mode(ViSession, ViUInt32, ViString, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:46</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_USB_access_mode(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 accessMode, TLDFM_64Library.ViString requestedKey, Pointer<TLDFM_64Library.ViChar > accessKey) {
-		return Pointer.pointerToAddress(TLDFM_set_USB_access_mode(Pointer.getPeer(instrumentHandle), Pointer.getPeer(accessMode), Pointer.getPeer(requestedKey), Pointer.getPeer(accessKey)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_USB_access_mode(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long accessMode, Pointer<Byte > requestedKey, Pointer<Byte > accessKey) {
+		return TLDFM_set_USB_access_mode(instrumentHandle, accessMode, Pointer.getPeer(requestedKey), Pointer.getPeer(accessKey));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_USB_access_mode(@Ptr long instrumentHandle, @Ptr long accessMode, @Ptr long requestedKey, @Ptr long accessKey);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_USB_access_mode(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long accessMode, @Ptr long requestedKey, @Ptr long accessKey);
 	/**
 	 * segment voltage functions<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_get_segment_voltage(ViSession, ViUInt32, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_segment_voltage(ViSession, ViUInt32, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:54</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_segment_voltage(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 segmentIndex, Pointer<TLDFM_64Library.ViReal64 > pSegmentVoltage) {
-		return Pointer.pointerToAddress(TLDFM_get_segment_voltage(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentIndex), Pointer.getPeer(pSegmentVoltage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_segment_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long segmentIndex, Pointer<Double > pSegmentVoltage) {
+		return TLDFM_get_segment_voltage(instrumentHandle, segmentIndex, Pointer.getPeer(pSegmentVoltage));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_segment_voltage(@Ptr long instrumentHandle, @Ptr long segmentIndex, @Ptr long pSegmentVoltage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_segment_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long segmentIndex, @Ptr long pSegmentVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_segment_voltage(ViSession, ViUInt32, ViReal64)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_segment_voltage(ViSession, ViUInt32, ViReal64)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:58</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_segment_voltage(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 segmentIndex, TLDFM_64Library.ViReal64 segmentVoltage) {
-		return Pointer.pointerToAddress(TLDFM_set_segment_voltage(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentIndex), Pointer.getPeer(segmentVoltage)));
-	}
-	@Ptr 
-	protected native static long TLDFM_set_segment_voltage(@Ptr long instrumentHandle, @Ptr long segmentIndex, @Ptr long segmentVoltage);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_set_segment_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long segmentIndex, double segmentVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_segment_voltages(ViSession, ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_segment_voltages(ViSession, ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:62</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_segment_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > segmentVoltages) {
-		return Pointer.pointerToAddress(TLDFM_get_segment_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_segment_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > segmentVoltages) {
+		return TLDFM_get_segment_voltages(instrumentHandle, Pointer.getPeer(segmentVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_segment_voltages(@Ptr long instrumentHandle, @Ptr long segmentVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_segment_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long segmentVoltages);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_segment_voltages(ViSession, ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_segment_voltages(ViSession, ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:65</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_segment_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > segmentVoltages) {
-		return Pointer.pointerToAddress(TLDFM_set_segment_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_segment_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > segmentVoltages) {
+		return TLDFM_set_segment_voltages(instrumentHandle, Pointer.getPeer(segmentVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_segment_voltages(@Ptr long instrumentHandle, @Ptr long segmentVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_segment_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long segmentVoltages);
 	/**
 	 * tilt element voltage functions<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_get_tilt_voltage(ViSession, ViUInt32, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_tilt_voltage(ViSession, ViUInt32, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:71</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_tilt_voltage(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 tiltIndex, Pointer<TLDFM_64Library.ViReal64 > pTiltVoltage) {
-		return Pointer.pointerToAddress(TLDFM_get_tilt_voltage(Pointer.getPeer(instrumentHandle), Pointer.getPeer(tiltIndex), Pointer.getPeer(pTiltVoltage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_tilt_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long tiltIndex, Pointer<Double > pTiltVoltage) {
+		return TLDFM_get_tilt_voltage(instrumentHandle, tiltIndex, Pointer.getPeer(pTiltVoltage));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_tilt_voltage(@Ptr long instrumentHandle, @Ptr long tiltIndex, @Ptr long pTiltVoltage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_tilt_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long tiltIndex, @Ptr long pTiltVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_tilt_voltage(ViSession, ViUInt32, ViReal64)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_tilt_voltage(ViSession, ViUInt32, ViReal64)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:75</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_tilt_voltage(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 tiltIndex, TLDFM_64Library.ViReal64 tiltVoltage) {
-		return Pointer.pointerToAddress(TLDFM_set_tilt_voltage(Pointer.getPeer(instrumentHandle), Pointer.getPeer(tiltIndex), Pointer.getPeer(tiltVoltage)));
-	}
-	@Ptr 
-	protected native static long TLDFM_set_tilt_voltage(@Ptr long instrumentHandle, @Ptr long tiltIndex, @Ptr long tiltVoltage);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_set_tilt_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long tiltIndex, double tiltVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_tilt_voltages(ViSession, ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_tilt_voltages(ViSession, ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:79</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_tilt_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > tiltVoltages) {
-		return Pointer.pointerToAddress(TLDFM_get_tilt_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(tiltVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_tilt_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > tiltVoltages) {
+		return TLDFM_get_tilt_voltages(instrumentHandle, Pointer.getPeer(tiltVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_tilt_voltages(@Ptr long instrumentHandle, @Ptr long tiltVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_tilt_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long tiltVoltages);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_tilt_voltages(ViSession, ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_tilt_voltages(ViSession, ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:82</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_tilt_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > tiltVoltages) {
-		return Pointer.pointerToAddress(TLDFM_set_tilt_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(tiltVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_tilt_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > tiltVoltages) {
+		return TLDFM_set_tilt_voltages(instrumentHandle, Pointer.getPeer(tiltVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_tilt_voltages(@Ptr long instrumentHandle, @Ptr long tiltVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_tilt_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long tiltVoltages);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_tilt_amplitude_angle(ViSession, ViReal64, ViReal64)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_tilt_amplitude_angle(ViSession, ViReal64, ViReal64)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:85</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_tilt_amplitude_angle(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViReal64 amplitute, TLDFM_64Library.ViReal64 angle) {
-		return Pointer.pointerToAddress(TLDFM_set_tilt_amplitude_angle(Pointer.getPeer(instrumentHandle), Pointer.getPeer(amplitute), Pointer.getPeer(angle)));
-	}
-	@Ptr 
-	protected native static long TLDFM_set_tilt_amplitude_angle(@Ptr long instrumentHandle, @Ptr long amplitute, @Ptr long angle);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_set_tilt_amplitude_angle(@org.bridj.ann.CLong long instrumentHandle, double amplitute, double angle);
 	/**
 	 * sets the voltages for all segments and all tilt elements<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_get_voltages(ViSession, ViReal64[], ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_voltages(ViSession, ViReal64[], ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:93</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > segmentVoltages, Pointer<TLDFM_64Library.ViReal64 > tiltVoltages) {
-		return Pointer.pointerToAddress(TLDFM_get_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentVoltages), Pointer.getPeer(tiltVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > segmentVoltages, Pointer<Double > tiltVoltages) {
+		return TLDFM_get_voltages(instrumentHandle, Pointer.getPeer(segmentVoltages), Pointer.getPeer(tiltVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_voltages(@Ptr long instrumentHandle, @Ptr long segmentVoltages, @Ptr long tiltVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long segmentVoltages, @Ptr long tiltVoltages);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_voltages(ViSession, ViReal64[], ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_voltages(ViSession, ViReal64[], ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:97</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > segmentVoltages, Pointer<TLDFM_64Library.ViReal64 > tiltVoltages) {
-		return Pointer.pointerToAddress(TLDFM_set_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentVoltages), Pointer.getPeer(tiltVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > segmentVoltages, Pointer<Double > tiltVoltages) {
+		return TLDFM_set_voltages(instrumentHandle, Pointer.getPeer(segmentVoltages), Pointer.getPeer(tiltVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_voltages(@Ptr long instrumentHandle, @Ptr long segmentVoltages, @Ptr long tiltVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long segmentVoltages, @Ptr long tiltVoltages);
 	/**
 	 * device information functions<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_get_manufacturer_name(ViSession, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_manufacturer_name(ViSession, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:104</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_manufacturer_name(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > manufacturerName) {
-		return Pointer.pointerToAddress(TLDFM_get_manufacturer_name(Pointer.getPeer(instrumentHandle), Pointer.getPeer(manufacturerName)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_manufacturer_name(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > manufacturerName) {
+		return TLDFM_get_manufacturer_name(instrumentHandle, Pointer.getPeer(manufacturerName));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_manufacturer_name(@Ptr long instrumentHandle, @Ptr long manufacturerName);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_manufacturer_name(@org.bridj.ann.CLong long instrumentHandle, @Ptr long manufacturerName);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_instrument_name(ViSession, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_instrument_name(ViSession, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:107</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_instrument_name(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > instrName) {
-		return Pointer.pointerToAddress(TLDFM_get_instrument_name(Pointer.getPeer(instrumentHandle), Pointer.getPeer(instrName)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_instrument_name(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > instrName) {
+		return TLDFM_get_instrument_name(instrumentHandle, Pointer.getPeer(instrName));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_instrument_name(@Ptr long instrumentHandle, @Ptr long instrName);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_instrument_name(@org.bridj.ann.CLong long instrumentHandle, @Ptr long instrName);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_instrument_name(ViSession, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_instrument_name(ViSession, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:110</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_instrument_name(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > instrName) {
-		return Pointer.pointerToAddress(TLDFM_set_instrument_name(Pointer.getPeer(instrumentHandle), Pointer.getPeer(instrName)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_instrument_name(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > instrName) {
+		return TLDFM_set_instrument_name(instrumentHandle, Pointer.getPeer(instrName));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_instrument_name(@Ptr long instrumentHandle, @Ptr long instrName);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_instrument_name(@org.bridj.ann.CLong long instrumentHandle, @Ptr long instrName);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_serial_Number(ViSession, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_serial_Number(ViSession, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:113</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_serial_Number(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > serialNumber) {
-		return Pointer.pointerToAddress(TLDFM_get_serial_Number(Pointer.getPeer(instrumentHandle), Pointer.getPeer(serialNumber)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_serial_Number(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > serialNumber) {
+		return TLDFM_get_serial_Number(instrumentHandle, Pointer.getPeer(serialNumber));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_serial_Number(@Ptr long instrumentHandle, @Ptr long serialNumber);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_serial_Number(@org.bridj.ann.CLong long instrumentHandle, @Ptr long serialNumber);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_serial_number(ViSession, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_serial_number(ViSession, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:116</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_serial_number(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > serialNumber) {
-		return Pointer.pointerToAddress(TLDFM_set_serial_number(Pointer.getPeer(instrumentHandle), Pointer.getPeer(serialNumber)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_serial_number(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > serialNumber) {
+		return TLDFM_set_serial_number(instrumentHandle, Pointer.getPeer(serialNumber));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_serial_number(@Ptr long instrumentHandle, @Ptr long serialNumber);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_serial_number(@org.bridj.ann.CLong long instrumentHandle, @Ptr long serialNumber);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_user_text(ViSession, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_user_text(ViSession, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:119</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_user_text(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > userText) {
-		return Pointer.pointerToAddress(TLDFM_get_user_text(Pointer.getPeer(instrumentHandle), Pointer.getPeer(userText)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_user_text(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > userText) {
+		return TLDFM_get_user_text(instrumentHandle, Pointer.getPeer(userText));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_user_text(@Ptr long instrumentHandle, @Ptr long userText);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_user_text(@org.bridj.ann.CLong long instrumentHandle, @Ptr long userText);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_user_text(ViSession, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_user_text(ViSession, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:122</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_user_text(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > userText) {
-		return Pointer.pointerToAddress(TLDFM_set_user_text(Pointer.getPeer(instrumentHandle), Pointer.getPeer(userText)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_user_text(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > userText) {
+		return TLDFM_set_user_text(instrumentHandle, Pointer.getPeer(userText));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_user_text(@Ptr long instrumentHandle, @Ptr long userText);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_user_text(@org.bridj.ann.CLong long instrumentHandle, @Ptr long userText);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_update_firmware(ViSession, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_update_firmware(ViSession, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:125</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_update_firmware(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViChar > firmwareFile) {
-		return Pointer.pointerToAddress(TLDFM_update_firmware(Pointer.getPeer(instrumentHandle), Pointer.getPeer(firmwareFile)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_update_firmware(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > firmwareFile) {
+		return TLDFM_update_firmware(instrumentHandle, Pointer.getPeer(firmwareFile));
 	}
-	@Ptr 
-	protected native static long TLDFM_update_firmware(@Ptr long instrumentHandle, @Ptr long firmwareFile);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_update_firmware(@org.bridj.ann.CLong long instrumentHandle, @Ptr long firmwareFile);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_enable_event(ViSession)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_enable_event(ViSession)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:128</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_enable_event(TLDFM_64Library.ViSession instrumentHandle) {
-		return Pointer.pointerToAddress(TLDFM_enable_event(Pointer.getPeer(instrumentHandle)));
-	}
-	@Ptr 
-	protected native static long TLDFM_enable_event(@Ptr long instrumentHandle);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_enable_event(@org.bridj.ann.CLong long instrumentHandle);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_disable_event(ViSession)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_disable_event(ViSession)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:130</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_disable_event(TLDFM_64Library.ViSession instrumentHandle) {
-		return Pointer.pointerToAddress(TLDFM_disable_event(Pointer.getPeer(instrumentHandle)));
-	}
-	@Ptr 
-	protected native static long TLDFM_disable_event(@Ptr long instrumentHandle);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_disable_event(@org.bridj.ann.CLong long instrumentHandle);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_add_status_delegate(ViSession, StatusUpdate)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_add_status_delegate(ViSession, StatusUpdate)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:132</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_add_status_delegate(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.StatusUpdate statusUpdateDelegate) {
-		return Pointer.pointerToAddress(TLDFM_add_status_delegate(Pointer.getPeer(instrumentHandle), Pointer.getPeer(statusUpdateDelegate)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_add_status_delegate(@org.bridj.ann.CLong long instrumentHandle, Pointer<TLDFM_64Library.StatusUpdate > statusUpdateDelegate) {
+		return TLDFM_add_status_delegate(instrumentHandle, Pointer.getPeer(statusUpdateDelegate));
 	}
-	@Ptr 
-	protected native static long TLDFM_add_status_delegate(@Ptr long instrumentHandle, @Ptr long statusUpdateDelegate);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_add_status_delegate(@org.bridj.ann.CLong long instrumentHandle, @Ptr long statusUpdateDelegate);
 	/**
 	 * ******************************************************************************<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_get_segment_count(ViSession, ViUInt32*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_segment_count(ViSession, ViUInt32*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:137</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_segment_count(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViUInt32 > pSegmentCount) {
-		return Pointer.pointerToAddress(TLDFM_get_segment_count(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pSegmentCount)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_segment_count(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pSegmentCount) {
+		return TLDFM_get_segment_count(instrumentHandle, Pointer.getPeer(pSegmentCount));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_segment_count(@Ptr long instrumentHandle, @Ptr long pSegmentCount);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_segment_count(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pSegmentCount);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_segment_maximum(ViSession, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_segment_maximum(ViSession, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:140</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_segment_maximum(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pSegmentMaximum) {
-		return Pointer.pointerToAddress(TLDFM_get_segment_maximum(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pSegmentMaximum)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_segment_maximum(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pSegmentMaximum) {
+		return TLDFM_get_segment_maximum(instrumentHandle, Pointer.getPeer(pSegmentMaximum));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_segment_maximum(@Ptr long instrumentHandle, @Ptr long pSegmentMaximum);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_segment_maximum(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pSegmentMaximum);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_segment_minimum(ViSession, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_segment_minimum(ViSession, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:143</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_segment_minimum(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pSegmentMinimum) {
-		return Pointer.pointerToAddress(TLDFM_get_segment_minimum(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pSegmentMinimum)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_segment_minimum(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pSegmentMinimum) {
+		return TLDFM_get_segment_minimum(instrumentHandle, Pointer.getPeer(pSegmentMinimum));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_segment_minimum(@Ptr long instrumentHandle, @Ptr long pSegmentMinimum);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_segment_minimum(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pSegmentMinimum);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_tilt_count(ViSession, ViUInt32*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_tilt_count(ViSession, ViUInt32*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:146</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_tilt_count(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViUInt32 > pTiltCount) {
-		return Pointer.pointerToAddress(TLDFM_get_tilt_count(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pTiltCount)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_tilt_count(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pTiltCount) {
+		return TLDFM_get_tilt_count(instrumentHandle, Pointer.getPeer(pTiltCount));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_tilt_count(@Ptr long instrumentHandle, @Ptr long pTiltCount);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_tilt_count(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pTiltCount);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_tilt_maximum(ViSession, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_tilt_maximum(ViSession, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:149</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_tilt_maximum(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pTiltMaximum) {
-		return Pointer.pointerToAddress(TLDFM_get_tilt_maximum(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pTiltMaximum)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_tilt_maximum(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pTiltMaximum) {
+		return TLDFM_get_tilt_maximum(instrumentHandle, Pointer.getPeer(pTiltMaximum));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_tilt_maximum(@Ptr long instrumentHandle, @Ptr long pTiltMaximum);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_tilt_maximum(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pTiltMaximum);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_tilt_minimum(ViSession, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_tilt_minimum(ViSession, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:152</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_tilt_minimum(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pTiltMinimum) {
-		return Pointer.pointerToAddress(TLDFM_get_tilt_minimum(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pTiltMinimum)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_tilt_minimum(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pTiltMinimum) {
+		return TLDFM_get_tilt_minimum(instrumentHandle, Pointer.getPeer(pTiltMinimum));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_tilt_minimum(@Ptr long instrumentHandle, @Ptr long pTiltMinimum);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_tilt_minimum(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pTiltMinimum);
 	/**
 	 * ******************************************************************************<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_set_access_level(ViSession, ViChar, ViChar[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_access_level(ViSession, ViChar, ViChar[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:157</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_access_level(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViChar accessLevel, Pointer<TLDFM_64Library.ViChar > accessPassword) {
-		return Pointer.pointerToAddress(TLDFM_set_access_level(Pointer.getPeer(instrumentHandle), Pointer.getPeer(accessLevel), Pointer.getPeer(accessPassword)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_access_level(@org.bridj.ann.CLong long instrumentHandle, byte accessLevel, Pointer<Byte > accessPassword) {
+		return TLDFM_set_access_level(instrumentHandle, accessLevel, Pointer.getPeer(accessPassword));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_access_level(@Ptr long instrumentHandle, @Ptr long accessLevel, @Ptr long accessPassword);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_access_level(@org.bridj.ann.CLong long instrumentHandle, byte accessLevel, @Ptr long accessPassword);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_device_configuration(ViSession, ViUInt32*, ViReal64*, ViReal64*, ViReal64*, ViUInt32*, ViReal64*, ViReal64*, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_device_configuration(ViSession, ViUInt32*, ViReal64*, ViReal64*, ViReal64*, ViUInt32*, ViReal64*, ViReal64*, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:161</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_device_configuration(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViUInt32 > pSegmentCnt, Pointer<TLDFM_64Library.ViReal64 > pMinSegmentVoltage, Pointer<TLDFM_64Library.ViReal64 > pMaxSegmentVoltage, Pointer<TLDFM_64Library.ViReal64 > pSegmentCommonVoltageMax, Pointer<TLDFM_64Library.ViUInt32 > pTiltElementCnt, Pointer<TLDFM_64Library.ViReal64 > pMinTiltVoltage, Pointer<TLDFM_64Library.ViReal64 > pMaxTiltVoltage, Pointer<TLDFM_64Library.ViReal64 > pTiltCommonVoltageMax) {
-		return Pointer.pointerToAddress(TLDFM_get_device_configuration(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pSegmentCnt), Pointer.getPeer(pMinSegmentVoltage), Pointer.getPeer(pMaxSegmentVoltage), Pointer.getPeer(pSegmentCommonVoltageMax), Pointer.getPeer(pTiltElementCnt), Pointer.getPeer(pMinTiltVoltage), Pointer.getPeer(pMaxTiltVoltage), Pointer.getPeer(pTiltCommonVoltageMax)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_device_configuration(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pSegmentCnt, Pointer<Double > pMinSegmentVoltage, Pointer<Double > pMaxSegmentVoltage, Pointer<Double > pSegmentCommonVoltageMax, Pointer<org.bridj.CLong > pTiltElementCnt, Pointer<Double > pMinTiltVoltage, Pointer<Double > pMaxTiltVoltage, Pointer<Double > pTiltCommonVoltageMax) {
+		return TLDFM_get_device_configuration(instrumentHandle, Pointer.getPeer(pSegmentCnt), Pointer.getPeer(pMinSegmentVoltage), Pointer.getPeer(pMaxSegmentVoltage), Pointer.getPeer(pSegmentCommonVoltageMax), Pointer.getPeer(pTiltElementCnt), Pointer.getPeer(pMinTiltVoltage), Pointer.getPeer(pMaxTiltVoltage), Pointer.getPeer(pTiltCommonVoltageMax));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_device_configuration(@Ptr long instrumentHandle, @Ptr long pSegmentCnt, @Ptr long pMinSegmentVoltage, @Ptr long pMaxSegmentVoltage, @Ptr long pSegmentCommonVoltageMax, @Ptr long pTiltElementCnt, @Ptr long pMinTiltVoltage, @Ptr long pMaxTiltVoltage, @Ptr long pTiltCommonVoltageMax);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_device_configuration(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pSegmentCnt, @Ptr long pMinSegmentVoltage, @Ptr long pMaxSegmentVoltage, @Ptr long pSegmentCommonVoltageMax, @Ptr long pTiltElementCnt, @Ptr long pMinTiltVoltage, @Ptr long pMaxTiltVoltage, @Ptr long pTiltCommonVoltageMax);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_device_configuration(ViSession, ViUInt32, ViReal64, ViReal64, ViReal64, ViUInt32, ViReal64, ViReal64, ViReal64)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_device_configuration(ViSession, ViUInt32, ViReal64, ViReal64, ViReal64, ViUInt32, ViReal64, ViReal64, ViReal64)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:171</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_device_configuration(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 segmentCnt, TLDFM_64Library.ViReal64 minSegmentVoltage, TLDFM_64Library.ViReal64 maxSegmentVoltage, TLDFM_64Library.ViReal64 segmentCommonVoltageMax, TLDFM_64Library.ViUInt32 tiltElementCnt, TLDFM_64Library.ViReal64 minTiltVoltage, TLDFM_64Library.ViReal64 maxTiltVoltage, TLDFM_64Library.ViReal64 tiltCommonVoltageMax) {
-		return Pointer.pointerToAddress(TLDFM_set_device_configuration(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentCnt), Pointer.getPeer(minSegmentVoltage), Pointer.getPeer(maxSegmentVoltage), Pointer.getPeer(segmentCommonVoltageMax), Pointer.getPeer(tiltElementCnt), Pointer.getPeer(minTiltVoltage), Pointer.getPeer(maxTiltVoltage), Pointer.getPeer(tiltCommonVoltageMax)));
-	}
-	@Ptr 
-	protected native static long TLDFM_set_device_configuration(@Ptr long instrumentHandle, @Ptr long segmentCnt, @Ptr long minSegmentVoltage, @Ptr long maxSegmentVoltage, @Ptr long segmentCommonVoltageMax, @Ptr long tiltElementCnt, @Ptr long minTiltVoltage, @Ptr long maxTiltVoltage, @Ptr long tiltCommonVoltageMax);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_set_device_configuration(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long segmentCnt, double minSegmentVoltage, double maxSegmentVoltage, double segmentCommonVoltageMax, @org.bridj.ann.CLong long tiltElementCnt, double minTiltVoltage, double maxTiltVoltage, double tiltCommonVoltageMax);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_device_calibration(ViSession, ViReal64*, ViReal64*, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_device_calibration(ViSession, ViReal64*, ViReal64*, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:181</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_device_calibration(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pSegmentVoltageCompensation, Pointer<TLDFM_64Library.ViReal64 > pTiltVoltageCompensation, Pointer<TLDFM_64Library.ViReal64 > pSingleSegmentTiltVoltage) {
-		return Pointer.pointerToAddress(TLDFM_get_device_calibration(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pSegmentVoltageCompensation), Pointer.getPeer(pTiltVoltageCompensation), Pointer.getPeer(pSingleSegmentTiltVoltage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_device_calibration(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pSegmentVoltageCompensation, Pointer<Double > pTiltVoltageCompensation, Pointer<Double > pSingleSegmentTiltVoltage) {
+		return TLDFM_get_device_calibration(instrumentHandle, Pointer.getPeer(pSegmentVoltageCompensation), Pointer.getPeer(pTiltVoltageCompensation), Pointer.getPeer(pSingleSegmentTiltVoltage));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_device_calibration(@Ptr long instrumentHandle, @Ptr long pSegmentVoltageCompensation, @Ptr long pTiltVoltageCompensation, @Ptr long pSingleSegmentTiltVoltage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_device_calibration(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pSegmentVoltageCompensation, @Ptr long pTiltVoltageCompensation, @Ptr long pSingleSegmentTiltVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_device_calibration(ViSession, ViReal64, ViReal64, ViReal64)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_device_calibration(ViSession, ViReal64, ViReal64, ViReal64)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:186</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_device_calibration(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViReal64 segmentVoltageCompensation, TLDFM_64Library.ViReal64 tiltVoltageCompensation, TLDFM_64Library.ViReal64 singleSegmentTiltVoltage) {
-		return Pointer.pointerToAddress(TLDFM_set_device_calibration(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentVoltageCompensation), Pointer.getPeer(tiltVoltageCompensation), Pointer.getPeer(singleSegmentTiltVoltage)));
-	}
-	@Ptr 
-	protected native static long TLDFM_set_device_calibration(@Ptr long instrumentHandle, @Ptr long segmentVoltageCompensation, @Ptr long tiltVoltageCompensation, @Ptr long singleSegmentTiltVoltage);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_set_device_calibration(@org.bridj.ann.CLong long instrumentHandle, double segmentVoltageCompensation, double tiltVoltageCompensation, double singleSegmentTiltVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_hysteresis_parameters(ViSession, ViUInt32, ViUInt32*, ViReal64*, ViReal64[], ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_hysteresis_parameters(ViSession, ViUInt32, ViUInt32*, ViReal64*, ViReal64[], ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:191</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_hysteresis_parameters(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 target, Pointer<TLDFM_64Library.ViUInt32 > pCount, Pointer<TLDFM_64Library.ViReal64 > pNonlinearFactor, Pointer<TLDFM_64Library.ViReal64 > arrayTresholdInverter, Pointer<TLDFM_64Library.ViReal64 > arrayWeightInverter) {
-		return Pointer.pointerToAddress(TLDFM_get_hysteresis_parameters(Pointer.getPeer(instrumentHandle), Pointer.getPeer(target), Pointer.getPeer(pCount), Pointer.getPeer(pNonlinearFactor), Pointer.getPeer(arrayTresholdInverter), Pointer.getPeer(arrayWeightInverter)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_hysteresis_parameters(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long target, Pointer<org.bridj.CLong > pCount, Pointer<Double > pNonlinearFactor, Pointer<Double > arrayTresholdInverter, Pointer<Double > arrayWeightInverter) {
+		return TLDFM_get_hysteresis_parameters(instrumentHandle, target, Pointer.getPeer(pCount), Pointer.getPeer(pNonlinearFactor), Pointer.getPeer(arrayTresholdInverter), Pointer.getPeer(arrayWeightInverter));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_hysteresis_parameters(@Ptr long instrumentHandle, @Ptr long target, @Ptr long pCount, @Ptr long pNonlinearFactor, @Ptr long arrayTresholdInverter, @Ptr long arrayWeightInverter);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_hysteresis_parameters(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long target, @Ptr long pCount, @Ptr long pNonlinearFactor, @Ptr long arrayTresholdInverter, @Ptr long arrayWeightInverter);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_set_hysteresis_parameters(ViSession, ViUInt32, ViUInt32, ViReal64, ViReal64[], ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_set_hysteresis_parameters(ViSession, ViUInt32, ViUInt32, ViReal64, ViReal64[], ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:198</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_set_hysteresis_parameters(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 target, TLDFM_64Library.ViUInt32 count, TLDFM_64Library.ViReal64 nonlinearFactor, Pointer<TLDFM_64Library.ViReal64 > arrayTresholdInverter, Pointer<TLDFM_64Library.ViReal64 > arrayWeightInverter) {
-		return Pointer.pointerToAddress(TLDFM_set_hysteresis_parameters(Pointer.getPeer(instrumentHandle), Pointer.getPeer(target), Pointer.getPeer(count), Pointer.getPeer(nonlinearFactor), Pointer.getPeer(arrayTresholdInverter), Pointer.getPeer(arrayWeightInverter)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_set_hysteresis_parameters(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long target, @org.bridj.ann.CLong long count, double nonlinearFactor, Pointer<Double > arrayTresholdInverter, Pointer<Double > arrayWeightInverter) {
+		return TLDFM_set_hysteresis_parameters(instrumentHandle, target, count, nonlinearFactor, Pointer.getPeer(arrayTresholdInverter), Pointer.getPeer(arrayWeightInverter));
 	}
-	@Ptr 
-	protected native static long TLDFM_set_hysteresis_parameters(@Ptr long instrumentHandle, @Ptr long target, @Ptr long count, @Ptr long nonlinearFactor, @Ptr long arrayTresholdInverter, @Ptr long arrayWeightInverter);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_set_hysteresis_parameters(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long target, @org.bridj.ann.CLong long count, double nonlinearFactor, @Ptr long arrayTresholdInverter, @Ptr long arrayWeightInverter);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_enabled_hysteresis_compensation(ViSession, ViUInt32, ViBoolean*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_enabled_hysteresis_compensation(ViSession, ViUInt32, ViBoolean*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:205</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_enabled_hysteresis_compensation(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 target, Pointer<TLDFM_64Library.ViBoolean > pEnabled) {
-		return Pointer.pointerToAddress(TLDFM_enabled_hysteresis_compensation(Pointer.getPeer(instrumentHandle), Pointer.getPeer(target), Pointer.getPeer(pEnabled)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_enabled_hysteresis_compensation(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long target, Pointer<Short > pEnabled) {
+		return TLDFM_enabled_hysteresis_compensation(instrumentHandle, target, Pointer.getPeer(pEnabled));
 	}
-	@Ptr 
-	protected native static long TLDFM_enabled_hysteresis_compensation(@Ptr long instrumentHandle, @Ptr long target, @Ptr long pEnabled);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_enabled_hysteresis_compensation(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long target, @Ptr long pEnabled);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_enable_hysteresis_compensation(ViSession, ViUInt32, ViBoolean)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_enable_hysteresis_compensation(ViSession, ViUInt32, ViBoolean)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:209</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_enable_hysteresis_compensation(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 target, TLDFM_64Library.ViBoolean enable) {
-		return Pointer.pointerToAddress(TLDFM_enable_hysteresis_compensation(Pointer.getPeer(instrumentHandle), Pointer.getPeer(target), Pointer.getPeer(enable)));
-	}
-	@Ptr 
-	protected native static long TLDFM_enable_hysteresis_compensation(@Ptr long instrumentHandle, @Ptr long target, @Ptr long enable);
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFM_enable_hysteresis_compensation(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long target, short enable);
 	/**
 	 * ******************************************************************************<br>
-	 * Original signature : <code>_VI_FUNC TLDFM_get_measured_segment_voltage(ViSession, ViUInt32, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_measured_segment_voltage(ViSession, ViUInt32, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:215</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_measured_segment_voltage(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 segmentIndex, Pointer<TLDFM_64Library.ViReal64 > pSegmentVoltage) {
-		return Pointer.pointerToAddress(TLDFM_get_measured_segment_voltage(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentIndex), Pointer.getPeer(pSegmentVoltage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_measured_segment_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long segmentIndex, Pointer<Double > pSegmentVoltage) {
+		return TLDFM_get_measured_segment_voltage(instrumentHandle, segmentIndex, Pointer.getPeer(pSegmentVoltage));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_measured_segment_voltage(@Ptr long instrumentHandle, @Ptr long segmentIndex, @Ptr long pSegmentVoltage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_measured_segment_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long segmentIndex, @Ptr long pSegmentVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_measured_segment_voltages(ViSession, ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_measured_segment_voltages(ViSession, ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:219</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_measured_segment_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > segmentVoltages) {
-		return Pointer.pointerToAddress(TLDFM_get_measured_segment_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_measured_segment_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > segmentVoltages) {
+		return TLDFM_get_measured_segment_voltages(instrumentHandle, Pointer.getPeer(segmentVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_measured_segment_voltages(@Ptr long instrumentHandle, @Ptr long segmentVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_measured_segment_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long segmentVoltages);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_measured_tilt_voltage(ViSession, ViUInt32, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_measured_tilt_voltage(ViSession, ViUInt32, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:222</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_measured_tilt_voltage(TLDFM_64Library.ViSession instrumentHandle, TLDFM_64Library.ViUInt32 tiltIndex, Pointer<TLDFM_64Library.ViReal64 > pTiltVoltage) {
-		return Pointer.pointerToAddress(TLDFM_get_measured_tilt_voltage(Pointer.getPeer(instrumentHandle), Pointer.getPeer(tiltIndex), Pointer.getPeer(pTiltVoltage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_measured_tilt_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long tiltIndex, Pointer<Double > pTiltVoltage) {
+		return TLDFM_get_measured_tilt_voltage(instrumentHandle, tiltIndex, Pointer.getPeer(pTiltVoltage));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_measured_tilt_voltage(@Ptr long instrumentHandle, @Ptr long tiltIndex, @Ptr long pTiltVoltage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_measured_tilt_voltage(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long tiltIndex, @Ptr long pTiltVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_measured_tilt_voltages(ViSession, ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_measured_tilt_voltages(ViSession, ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:226</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_measured_tilt_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > tiltVoltages) {
-		return Pointer.pointerToAddress(TLDFM_get_measured_tilt_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(tiltVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_measured_tilt_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > tiltVoltages) {
+		return TLDFM_get_measured_tilt_voltages(instrumentHandle, Pointer.getPeer(tiltVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_measured_tilt_voltages(@Ptr long instrumentHandle, @Ptr long tiltVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_measured_tilt_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long tiltVoltages);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_measured_voltages(ViSession, ViReal64[], ViReal64[])</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_measured_voltages(ViSession, ViReal64[], ViReal64[])</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:229</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_measured_voltages(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > segmentVoltages, Pointer<TLDFM_64Library.ViReal64 > tiltVoltages) {
-		return Pointer.pointerToAddress(TLDFM_get_measured_voltages(Pointer.getPeer(instrumentHandle), Pointer.getPeer(segmentVoltages), Pointer.getPeer(tiltVoltages)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_measured_voltages(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > segmentVoltages, Pointer<Double > tiltVoltages) {
+		return TLDFM_get_measured_voltages(instrumentHandle, Pointer.getPeer(segmentVoltages), Pointer.getPeer(tiltVoltages));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_measured_voltages(@Ptr long instrumentHandle, @Ptr long segmentVoltages, @Ptr long tiltVoltages);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_measured_voltages(@org.bridj.ann.CLong long instrumentHandle, @Ptr long segmentVoltages, @Ptr long tiltVoltages);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_feedback_voltage(ViSession, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_feedback_voltage(ViSession, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:233</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_feedback_voltage(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pFeedbackVoltage) {
-		return Pointer.pointerToAddress(TLDFM_get_feedback_voltage(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pFeedbackVoltage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_feedback_voltage(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pFeedbackVoltage) {
+		return TLDFM_get_feedback_voltage(instrumentHandle, Pointer.getPeer(pFeedbackVoltage));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_feedback_voltage(@Ptr long instrumentHandle, @Ptr long pFeedbackVoltage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_feedback_voltage(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pFeedbackVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_feedback_current(ViSession, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_feedback_current(ViSession, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:236</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_feedback_current(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pFeedbackCurrent) {
-		return Pointer.pointerToAddress(TLDFM_get_feedback_current(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pFeedbackCurrent)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_feedback_current(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pFeedbackCurrent) {
+		return TLDFM_get_feedback_current(instrumentHandle, Pointer.getPeer(pFeedbackCurrent));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_feedback_current(@Ptr long instrumentHandle, @Ptr long pFeedbackCurrent);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_feedback_current(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pFeedbackCurrent);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_feedback(ViSession, ViReal64*, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_feedback(ViSession, ViReal64*, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:239</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_feedback(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pFeedbackVoltage, Pointer<TLDFM_64Library.ViReal64 > pFeedbackCurrent) {
-		return Pointer.pointerToAddress(TLDFM_get_feedback(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pFeedbackVoltage), Pointer.getPeer(pFeedbackCurrent)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_feedback(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pFeedbackVoltage, Pointer<Double > pFeedbackCurrent) {
+		return TLDFM_get_feedback(instrumentHandle, Pointer.getPeer(pFeedbackVoltage), Pointer.getPeer(pFeedbackCurrent));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_feedback(@Ptr long instrumentHandle, @Ptr long pFeedbackVoltage, @Ptr long pFeedbackCurrent);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_feedback(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pFeedbackVoltage, @Ptr long pFeedbackCurrent);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_monitor_voltage(ViSession, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_monitor_voltage(ViSession, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:243</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_monitor_voltage(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pMonitorVoltage) {
-		return Pointer.pointerToAddress(TLDFM_get_monitor_voltage(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pMonitorVoltage)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_monitor_voltage(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pMonitorVoltage) {
+		return TLDFM_get_monitor_voltage(instrumentHandle, Pointer.getPeer(pMonitorVoltage));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_monitor_voltage(@Ptr long instrumentHandle, @Ptr long pMonitorVoltage);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_monitor_voltage(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pMonitorVoltage);
 	/**
-	 * Original signature : <code>_VI_FUNC TLDFM_get_temperatures(ViSession, ViReal64*, ViReal64*, ViReal64*, ViReal64*)</code><br>
+	 * Original signature : <code>ViStatus TLDFM_get_temperatures(ViSession, ViReal64*, ViReal64*, ViReal64*, ViReal64*)</code><br>
 	 * <i>native declaration : lib\dmp40\TLDFM.h:246</i>
 	 */
-	public static TLDFM_64Library._VI_FUNC TLDFM_get_temperatures(TLDFM_64Library.ViSession instrumentHandle, Pointer<TLDFM_64Library.ViReal64 > pIC1Temperatur, Pointer<TLDFM_64Library.ViReal64 > pIC2Temperatur, Pointer<TLDFM_64Library.ViReal64 > pMirrorTemperatur, Pointer<TLDFM_64Library.ViReal64 > pElectronicTemperatur) {
-		return Pointer.pointerToAddress(TLDFM_get_temperatures(Pointer.getPeer(instrumentHandle), Pointer.getPeer(pIC1Temperatur), Pointer.getPeer(pIC2Temperatur), Pointer.getPeer(pMirrorTemperatur), Pointer.getPeer(pElectronicTemperatur)));
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFM_get_temperatures(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pIC1Temperatur, Pointer<Double > pIC2Temperatur, Pointer<Double > pMirrorTemperatur, Pointer<Double > pElectronicTemperatur) {
+		return TLDFM_get_temperatures(instrumentHandle, Pointer.getPeer(pIC1Temperatur), Pointer.getPeer(pIC2Temperatur), Pointer.getPeer(pMirrorTemperatur), Pointer.getPeer(pElectronicTemperatur));
 	}
-	@Ptr 
-	protected native static long TLDFM_get_temperatures(@Ptr long instrumentHandle, @Ptr long pIC1Temperatur, @Ptr long pIC2Temperatur, @Ptr long pMirrorTemperatur, @Ptr long pElectronicTemperatur);
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFM_get_temperatures(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pIC1Temperatur, @Ptr long pIC2Temperatur, @Ptr long pMirrorTemperatur, @Ptr long pElectronicTemperatur);
+	/**
+	 * Global functions<br>
+	 * Original signature : <code>ViStatus TLDFMX_init(ViRsrc, ViBoolean, ViBoolean, ViSession*)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:6</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_init(Pointer<Byte > resourceName, short IDQuery, short resetDevice, Pointer<org.bridj.CLong > pInstrumentHandle) {
+		return TLDFMX_init(Pointer.getPeer(resourceName), IDQuery, resetDevice, Pointer.getPeer(pInstrumentHandle));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_init(@Ptr long resourceName, short IDQuery, short resetDevice, @Ptr long pInstrumentHandle);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_close(ViSession)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:11</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFMX_close(@org.bridj.ann.CLong long instrumentHandle);
+	/**
+	 * Utility Functions<br>
+	 * Original signature : <code>ViStatus TLDFMX_reset(ViSession)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:16</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFMX_reset(@org.bridj.ann.CLong long instrumentHandle);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_self_test(ViSession, ViInt16*, ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:18</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_self_test(@org.bridj.ann.CLong long instrumentHandle, Pointer<Short > pSelfTestResult, Pointer<Byte > selfTestMessage) {
+		return TLDFMX_self_test(instrumentHandle, Pointer.getPeer(pSelfTestResult), Pointer.getPeer(selfTestMessage));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_self_test(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pSelfTestResult, @Ptr long selfTestMessage);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_error_query(ViSession, ViInt32*, ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:22</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_error_query(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pErrorCode, Pointer<Byte > errorMessage) {
+		return TLDFMX_error_query(instrumentHandle, Pointer.getPeer(pErrorCode), Pointer.getPeer(errorMessage));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_error_query(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pErrorCode, @Ptr long errorMessage);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_error_message(ViSession, ViStatus, ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:26</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_error_message(@org.bridj.ann.CLong long instrumentHandle, TLDFM_64Library.ViStatus errorCode, Pointer<Byte > errorMessage) {
+		return TLDFMX_error_message(instrumentHandle, errorCode, Pointer.getPeer(errorMessage));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_error_message(@org.bridj.ann.CLong long instrumentHandle, TLDFM_64Library.ViStatus errorCode, @Ptr long errorMessage);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_revision_query(ViSession, ViChar[], ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:30</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_revision_query(@org.bridj.ann.CLong long instrumentHandle, Pointer<Byte > instrumentDriverRevision, Pointer<Byte > firmwareRevision) {
+		return TLDFMX_revision_query(instrumentHandle, Pointer.getPeer(instrumentDriverRevision), Pointer.getPeer(firmwareRevision));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_revision_query(@org.bridj.ann.CLong long instrumentHandle, @Ptr long instrumentDriverRevision, @Ptr long firmwareRevision);
+	/**
+	 * Action/Status Functions<br>
+	 * Original signature : <code>ViStatus TLDFMX_relax(ViSession, ViUInt32, ViBoolean, ViBoolean, ViReal64[], ViReal64[], ViInt32*)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:37</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_relax(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long devicePart, short isFirstStep, short reload, Pointer<Double > relaxPatternMirror, Pointer<Double > relaxPatternArms, Pointer<org.bridj.CLong > pRemainingSteps) {
+		return TLDFMX_relax(instrumentHandle, devicePart, isFirstStep, reload, Pointer.getPeer(relaxPatternMirror), Pointer.getPeer(relaxPatternArms), Pointer.getPeer(pRemainingSteps));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_relax(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long devicePart, short isFirstStep, short reload, @Ptr long relaxPatternMirror, @Ptr long relaxPatternArms, @Ptr long pRemainingSteps);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_measure_system_parameters(ViSession, ViBoolean, ViReal32[], ViReal64[], ViInt32*)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:45</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_measure_system_parameters(@org.bridj.ann.CLong long instrumentHandle, short isFirstStep, Pointer<Float > measuredZernikeAmplitudes, Pointer<Double > nextMirrorPattern, Pointer<org.bridj.CLong > pRemainingSteps) {
+		return TLDFMX_measure_system_parameters(instrumentHandle, isFirstStep, Pointer.getPeer(measuredZernikeAmplitudes), Pointer.getPeer(nextMirrorPattern), Pointer.getPeer(pRemainingSteps));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_measure_system_parameters(@org.bridj.ann.CLong long instrumentHandle, short isFirstStep, @Ptr long measuredZernikeAmplitudes, @Ptr long nextMirrorPattern, @Ptr long pRemainingSteps);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_get_flat_wavefront(ViSession, TLDFMX_zernikes_t, ViReal32[], ViReal64[], ViReal64[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:51</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_get_flat_wavefront(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long flatZernikes, Pointer<Float > measuredZernikeAmplitudes, Pointer<Double > deviceZernikeAmplitudes, Pointer<Double > voltagePattern) {
+		return TLDFMX_get_flat_wavefront(instrumentHandle, flatZernikes, Pointer.getPeer(measuredZernikeAmplitudes), Pointer.getPeer(deviceZernikeAmplitudes), Pointer.getPeer(voltagePattern));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_get_flat_wavefront(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long flatZernikes, @Ptr long measuredZernikeAmplitudes, @Ptr long deviceZernikeAmplitudes, @Ptr long voltagePattern);
+	/**
+	 * Configuration Functions<br>
+	 * Original signature : <code>ViStatus TLDFMX_set_single_voltage_setpoint(ViSession, ViInt32, ViReal64)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:60</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFMX_set_single_voltage_setpoint(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long segmentID, double voltage);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_set_voltages_setpoint(ViSession, ViReal64[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:64</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_set_voltages_setpoint(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > mirrorVoltages) {
+		return TLDFMX_set_voltages_setpoint(instrumentHandle, Pointer.getPeer(mirrorVoltages));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_set_voltages_setpoint(@org.bridj.ann.CLong long instrumentHandle, @Ptr long mirrorVoltages);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_calculate_single_zernike_pattern(ViSession, TLDFMX_zernike_flag_t, ViReal64, ViReal64[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:67</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_calculate_single_zernike_pattern(@org.bridj.ann.CLong long instrumentHandle, IntValuedEnum<TLDFM_64Library.TLDFMX_zernike_flag_t > zernike, double deviceZernikeAmplitude, Pointer<Double > mirrorPattern) {
+		return TLDFMX_calculate_single_zernike_pattern(instrumentHandle, (int)zernike.value(), deviceZernikeAmplitude, Pointer.getPeer(mirrorPattern));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_calculate_single_zernike_pattern(@org.bridj.ann.CLong long instrumentHandle, int zernike, double deviceZernikeAmplitude, @Ptr long mirrorPattern);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_calculate_zernike_pattern(ViSession, TLDFMX_zernikes_t, ViReal64[], ViReal64[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:72</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_calculate_zernike_pattern(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long zernikes, Pointer<Double > deviceZernikeAmplitudes, Pointer<Double > mirrorPattern) {
+		return TLDFMX_calculate_zernike_pattern(instrumentHandle, zernikes, Pointer.getPeer(deviceZernikeAmplitudes), Pointer.getPeer(mirrorPattern));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_calculate_zernike_pattern(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long zernikes, @Ptr long deviceZernikeAmplitudes, @Ptr long mirrorPattern);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_set_flip_mode(ViSession, TLDFMX_flip_t)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:77</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFMX_set_flip_mode(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long flipMode);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_get_flip_mode(ViSession, TLDFMX_flip_t*)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:80</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_get_flip_mode(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pFlipMode) {
+		return TLDFMX_get_flip_mode(instrumentHandle, Pointer.getPeer(pFlipMode));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_get_flip_mode(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pFlipMode);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_set_rotation_mode(ViSession, TLDFMX_rotation_t)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:83</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFMX_set_rotation_mode(@org.bridj.ann.CLong long instrumentHandle, @org.bridj.ann.CLong long rotation);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_get_rotation_mode(ViSession, TLDFMX_rotation_t*)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:86</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_get_rotation_mode(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pRotationMode) {
+		return TLDFMX_get_rotation_mode(instrumentHandle, Pointer.getPeer(pRotationMode));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_get_rotation_mode(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pRotationMode);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_set_pattern_range_check(ViSession, ViBoolean)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:89</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus TLDFMX_set_pattern_range_check(@org.bridj.ann.CLong long instrumentHandle, short enable);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_get_pattern_range_check(ViSession, ViBoolean*)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:92</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_get_pattern_range_check(@org.bridj.ann.CLong long instrumentHandle, Pointer<Short > pEnabled) {
+		return TLDFMX_get_pattern_range_check(instrumentHandle, Pointer.getPeer(pEnabled));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_get_pattern_range_check(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pEnabled);
+	/**
+	 * Data Functions<br>
+	 * Original signature : <code>ViStatus TLDFMX_get_parameters(ViSession, ViReal64*, ViReal64*, ViInt32*, ViInt32*, ViInt32*)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:98</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_get_parameters(@org.bridj.ann.CLong long instrumentHandle, Pointer<Double > pMinimumZernikeAmplitude, Pointer<Double > pMaximumZernikeAmplitude, Pointer<org.bridj.CLong > pZernikeCount, Pointer<org.bridj.CLong > pMeasurementSteps, Pointer<org.bridj.CLong > pRelaxSteps) {
+		return TLDFMX_get_parameters(instrumentHandle, Pointer.getPeer(pMinimumZernikeAmplitude), Pointer.getPeer(pMaximumZernikeAmplitude), Pointer.getPeer(pZernikeCount), Pointer.getPeer(pMeasurementSteps), Pointer.getPeer(pRelaxSteps));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_get_parameters(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pMinimumZernikeAmplitude, @Ptr long pMaximumZernikeAmplitude, @Ptr long pZernikeCount, @Ptr long pMeasurementSteps, @Ptr long pRelaxSteps);
+	/**
+	 * Original signature : <code>ViStatus TLDFMX_get_system_parameters(ViSession, TLDFMX_rotation_t*, TLDFMX_flip_t*, ViReal64[], ViBoolean*)</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:105</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_get_system_parameters(@org.bridj.ann.CLong long instrumentHandle, Pointer<org.bridj.CLong > pRotationMode, Pointer<org.bridj.CLong > pFlipMode, Pointer<Double > maxDeviceZernikeAmplitudes, Pointer<Short > isDataValid) {
+		return TLDFMX_get_system_parameters(instrumentHandle, Pointer.getPeer(pRotationMode), Pointer.getPeer(pFlipMode), Pointer.getPeer(maxDeviceZernikeAmplitudes), Pointer.getPeer(isDataValid));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_get_system_parameters(@org.bridj.ann.CLong long instrumentHandle, @Ptr long pRotationMode, @Ptr long pFlipMode, @Ptr long maxDeviceZernikeAmplitudes, @Ptr long isDataValid);
+	/**
+	 * Helper Functions<br>
+	 * Original signature : <code>ViStatus TLDFMX_convert_measured_zernike_amplitudes(ViSession, ViReal32[], ViReal64[])</code><br>
+	 * <i>native declaration : lib\dmp40\TLDFMX.h:114</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus TLDFMX_convert_measured_zernike_amplitudes(@org.bridj.ann.CLong long instrumentHandle, Pointer<Float > measuredZernikeAmplitudes, Pointer<Double > deviceZernikeAmplitudes) {
+		return TLDFMX_convert_measured_zernike_amplitudes(instrumentHandle, Pointer.getPeer(measuredZernikeAmplitudes), Pointer.getPeer(deviceZernikeAmplitudes));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus TLDFMX_convert_measured_zernike_amplitudes(@org.bridj.ann.CLong long instrumentHandle, @Ptr long measuredZernikeAmplitudes, @Ptr long deviceZernikeAmplitudes);
+	/**
+	 * - Resource Manager Functions and Operations -------------------------------<br>
+	 * Original signature : <code>ViStatus viOpenDefaultRM(ViPSession)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:61</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viOpenDefaultRM(Pointer<org.bridj.CLong > vi) {
+		return viOpenDefaultRM(Pointer.getPeer(vi));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viOpenDefaultRM(@Ptr long vi);
+	/**
+	 * Original signature : <code>ViStatus viFindRsrc(ViSession, ViString, ViPFindList, ViPUInt32, ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:62</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viFindRsrc(@org.bridj.ann.CLong long sesn, Pointer<Byte > expr, Pointer<org.bridj.CLong > vi, Pointer<org.bridj.CLong > retCnt, Pointer<Byte > desc) {
+		return viFindRsrc(sesn, Pointer.getPeer(expr), Pointer.getPeer(vi), Pointer.getPeer(retCnt), Pointer.getPeer(desc));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viFindRsrc(@org.bridj.ann.CLong long sesn, @Ptr long expr, @Ptr long vi, @Ptr long retCnt, @Ptr long desc);
+	/**
+	 * Original signature : <code>ViStatus viFindNext(ViFindList, ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:64</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viFindNext(@org.bridj.ann.CLong long vi, Pointer<Byte > desc) {
+		return viFindNext(vi, Pointer.getPeer(desc));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viFindNext(@org.bridj.ann.CLong long vi, @Ptr long desc);
+	/**
+	 * Original signature : <code>ViStatus viParseRsrc(ViSession, ViRsrc, ViPUInt16, ViPUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:65</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viParseRsrc(@org.bridj.ann.CLong long rmSesn, Pointer<Byte > rsrcName, Pointer<Short > intfType, Pointer<Short > intfNum) {
+		return viParseRsrc(rmSesn, Pointer.getPeer(rsrcName), Pointer.getPeer(intfType), Pointer.getPeer(intfNum));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viParseRsrc(@org.bridj.ann.CLong long rmSesn, @Ptr long rsrcName, @Ptr long intfType, @Ptr long intfNum);
+	/**
+	 * Original signature : <code>ViStatus viParseRsrcEx(ViSession, ViRsrc, ViPUInt16, ViPUInt16, ViChar[], ViChar[], ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:67</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viParseRsrcEx(@org.bridj.ann.CLong long rmSesn, Pointer<Byte > rsrcName, Pointer<Short > intfType, Pointer<Short > intfNum, Pointer<Byte > rsrcClass, Pointer<Byte > expandedUnaliasedName, Pointer<Byte > aliasIfExists) {
+		return viParseRsrcEx(rmSesn, Pointer.getPeer(rsrcName), Pointer.getPeer(intfType), Pointer.getPeer(intfNum), Pointer.getPeer(rsrcClass), Pointer.getPeer(expandedUnaliasedName), Pointer.getPeer(aliasIfExists));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viParseRsrcEx(@org.bridj.ann.CLong long rmSesn, @Ptr long rsrcName, @Ptr long intfType, @Ptr long intfNum, @Ptr long rsrcClass, @Ptr long expandedUnaliasedName, @Ptr long aliasIfExists);
+	/**
+	 * Original signature : <code>ViStatus viOpen(ViSession, ViRsrc, ViAccessMode, ViUInt32, ViPSession)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:71</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viOpen(@org.bridj.ann.CLong long sesn, Pointer<Byte > name, @org.bridj.ann.CLong long mode, @org.bridj.ann.CLong long timeout, Pointer<org.bridj.CLong > vi) {
+		return viOpen(sesn, Pointer.getPeer(name), mode, timeout, Pointer.getPeer(vi));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viOpen(@org.bridj.ann.CLong long sesn, @Ptr long name, @org.bridj.ann.CLong long mode, @org.bridj.ann.CLong long timeout, @Ptr long vi);
+	/**
+	 * - Resource Template Operations --------------------------------------------<br>
+	 * Original signature : <code>ViStatus viClose(ViObject)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:76</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viClose(@org.bridj.ann.CLong long vi);
+	/**
+	 * Original signature : <code>ViStatus viSetAttribute(ViObject, ViAttr, ViAttrState)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:77</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viSetAttribute(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long attrName, @org.bridj.ann.CLong long attrValue);
+	/**
+	 * Original signature : <code>ViStatus viGetAttribute(ViObject, ViAttr, void*)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:78</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viGetAttribute(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long attrName, Pointer<? > attrValue) {
+		return viGetAttribute(vi, attrName, Pointer.getPeer(attrValue));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viGetAttribute(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long attrName, @Ptr long attrValue);
+	/**
+	 * Original signature : <code>ViStatus viStatusDesc(ViObject, ViStatus, ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:79</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viStatusDesc(@org.bridj.ann.CLong long vi, TLDFM_64Library.ViStatus status, Pointer<Byte > desc) {
+		return viStatusDesc(vi, status, Pointer.getPeer(desc));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viStatusDesc(@org.bridj.ann.CLong long vi, TLDFM_64Library.ViStatus status, @Ptr long desc);
+	/**
+	 * Original signature : <code>ViStatus viTerminate(ViObject, ViUInt16, ViJobId)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:80</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viTerminate(@org.bridj.ann.CLong long vi, short degree, @org.bridj.ann.CLong long jobId);
+	/**
+	 * Original signature : <code>ViStatus viLock(ViSession, ViAccessMode, ViUInt32, ViKeyId, ViChar[])</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:82</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viLock(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long lockType, @org.bridj.ann.CLong long timeout, Pointer<Byte > requestedKey, Pointer<Byte > accessKey) {
+		return viLock(vi, lockType, timeout, Pointer.getPeer(requestedKey), Pointer.getPeer(accessKey));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viLock(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long lockType, @org.bridj.ann.CLong long timeout, @Ptr long requestedKey, @Ptr long accessKey);
+	/**
+	 * Original signature : <code>ViStatus viUnlock(ViSession)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:84</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viUnlock(@org.bridj.ann.CLong long vi);
+	/**
+	 * Original signature : <code>ViStatus viEnableEvent(ViSession, ViEventType, ViUInt16, ViEventFilter)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:85</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viEnableEvent(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, short mechanism, @org.bridj.ann.CLong long context);
+	/**
+	 * Original signature : <code>ViStatus viDisableEvent(ViSession, ViEventType, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:87</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viDisableEvent(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, short mechanism);
+	/**
+	 * Original signature : <code>ViStatus viDiscardEvents(ViSession, ViEventType, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:88</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viDiscardEvents(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, short mechanism);
+	/**
+	 * Original signature : <code>ViStatus viWaitOnEvent(ViSession, ViEventType, ViUInt32, ViPEventType, ViPEvent)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:89</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viWaitOnEvent(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long inEventType, @org.bridj.ann.CLong long timeout, Pointer<org.bridj.CLong > outEventType, Pointer<org.bridj.CLong > outContext) {
+		return viWaitOnEvent(vi, inEventType, timeout, Pointer.getPeer(outEventType), Pointer.getPeer(outContext));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viWaitOnEvent(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long inEventType, @org.bridj.ann.CLong long timeout, @Ptr long outEventType, @Ptr long outContext);
+	/**
+	 * Original signature : <code>ViStatus viInstallHandler(ViSession, ViEventType, ViHndlr, ViAddr)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:91</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viInstallHandler(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, TLDFM_64Library.ViHndlr handler, Pointer<? > userHandle) {
+		return viInstallHandler(vi, eventType, Pointer.getPeer((Pointer<?>) handler), Pointer.getPeer(userHandle));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viInstallHandler(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, @Ptr long handler, @Ptr long userHandle);
+	/**
+	 * Original signature : <code>ViStatus viUninstallHandler(ViSession, ViEventType, ViHndlr, ViAddr)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:93</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viUninstallHandler(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, TLDFM_64Library.ViHndlr handler, Pointer<? > userHandle) {
+		return viUninstallHandler(vi, eventType, Pointer.getPeer((Pointer<?>) handler), Pointer.getPeer(userHandle));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viUninstallHandler(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long eventType, @Ptr long handler, @Ptr long userHandle);
+	/**
+	 * - Basic I/O Operations ----------------------------------------------------<br>
+	 * Original signature : <code>ViStatus viRead(ViSession, ViPBuf, ViUInt32, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:98</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viRead(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > retCnt) {
+		return viRead(vi, Pointer.getPeer(buf), cnt, Pointer.getPeer(retCnt));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viRead(@org.bridj.ann.CLong long vi, @Ptr long buf, @org.bridj.ann.CLong long cnt, @Ptr long retCnt);
+	/**
+	 * Original signature : <code>ViStatus viReadAsync(ViSession, ViPBuf, ViUInt32, ViPJobId)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:99</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viReadAsync(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > jobId) {
+		return viReadAsync(vi, Pointer.getPeer(buf), cnt, Pointer.getPeer(jobId));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viReadAsync(@org.bridj.ann.CLong long vi, @Ptr long buf, @org.bridj.ann.CLong long cnt, @Ptr long jobId);
+	/**
+	 * Original signature : <code>ViStatus viReadToFile(ViSession, ViConstString, ViUInt32, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:100</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viReadToFile(@org.bridj.ann.CLong long vi, Pointer<Byte > filename, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > retCnt) {
+		return viReadToFile(vi, Pointer.getPeer(filename), cnt, Pointer.getPeer(retCnt));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viReadToFile(@org.bridj.ann.CLong long vi, @Ptr long filename, @org.bridj.ann.CLong long cnt, @Ptr long retCnt);
+	/**
+	 * Original signature : <code>ViStatus viWrite(ViSession, ViBuf, ViUInt32, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:102</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viWrite(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > retCnt) {
+		return viWrite(vi, Pointer.getPeer(buf), cnt, Pointer.getPeer(retCnt));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viWrite(@org.bridj.ann.CLong long vi, @Ptr long buf, @org.bridj.ann.CLong long cnt, @Ptr long retCnt);
+	/**
+	 * Original signature : <code>ViStatus viWriteAsync(ViSession, ViBuf, ViUInt32, ViPJobId)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:103</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viWriteAsync(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > jobId) {
+		return viWriteAsync(vi, Pointer.getPeer(buf), cnt, Pointer.getPeer(jobId));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viWriteAsync(@org.bridj.ann.CLong long vi, @Ptr long buf, @org.bridj.ann.CLong long cnt, @Ptr long jobId);
+	/**
+	 * Original signature : <code>ViStatus viWriteFromFile(ViSession, ViConstString, ViUInt32, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:104</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viWriteFromFile(@org.bridj.ann.CLong long vi, Pointer<Byte > filename, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > retCnt) {
+		return viWriteFromFile(vi, Pointer.getPeer(filename), cnt, Pointer.getPeer(retCnt));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viWriteFromFile(@org.bridj.ann.CLong long vi, @Ptr long filename, @org.bridj.ann.CLong long cnt, @Ptr long retCnt);
+	/**
+	 * Original signature : <code>ViStatus viAssertTrigger(ViSession, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:106</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viAssertTrigger(@org.bridj.ann.CLong long vi, short protocol);
+	/**
+	 * Original signature : <code>ViStatus viReadSTB(ViSession, ViPUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:107</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viReadSTB(@org.bridj.ann.CLong long vi, Pointer<Short > status) {
+		return viReadSTB(vi, Pointer.getPeer(status));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viReadSTB(@org.bridj.ann.CLong long vi, @Ptr long status);
+	/**
+	 * Original signature : <code>ViStatus viClear(ViSession)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:108</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viClear(@org.bridj.ann.CLong long vi);
+	/**
+	 * - Formatted and Buffered I/O Operations -----------------------------------<br>
+	 * Original signature : <code>ViStatus viSetBuf(ViSession, ViUInt16, ViUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:112</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viSetBuf(@org.bridj.ann.CLong long vi, short mask, @org.bridj.ann.CLong long size);
+	/**
+	 * Original signature : <code>ViStatus viFlush(ViSession, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:113</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viFlush(@org.bridj.ann.CLong long vi, short mask);
+	/**
+	 * Original signature : <code>ViStatus viBufWrite(ViSession, ViBuf, ViUInt32, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:115</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viBufWrite(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > retCnt) {
+		return viBufWrite(vi, Pointer.getPeer(buf), cnt, Pointer.getPeer(retCnt));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viBufWrite(@org.bridj.ann.CLong long vi, @Ptr long buf, @org.bridj.ann.CLong long cnt, @Ptr long retCnt);
+	/**
+	 * Original signature : <code>ViStatus viBufRead(ViSession, ViPBuf, ViUInt32, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:116</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viBufRead(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > retCnt) {
+		return viBufRead(vi, Pointer.getPeer(buf), cnt, Pointer.getPeer(retCnt));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viBufRead(@org.bridj.ann.CLong long vi, @Ptr long buf, @org.bridj.ann.CLong long cnt, @Ptr long retCnt);
+	/**
+	 * Original signature : <code>ViStatus viPrintf(ViSession, ViString, null)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:118</i>
+	 */
+	public static TLDFM_64Library.ViStatus viPrintf(@org.bridj.ann.CLong long vi, Pointer<Byte > writeFmt, Object... varArgs1) {
+		return viPrintf(vi, Pointer.getPeer(writeFmt), varArgs1);
+	}
+	protected native static TLDFM_64Library.ViStatus viPrintf(@org.bridj.ann.CLong long vi, @Ptr long writeFmt, Object... varArgs1);
+	/**
+	 * Original signature : <code>ViStatus viVPrintf(ViSession, ViString, ViVAList)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:119</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viVPrintf(@org.bridj.ann.CLong long vi, Pointer<Byte > writeFmt, TLDFM_64Library.va_list params) {
+		return viVPrintf(vi, Pointer.getPeer(writeFmt), Pointer.getPeer((Pointer<?>) params));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viVPrintf(@org.bridj.ann.CLong long vi, @Ptr long writeFmt, @Ptr long params);
+	/**
+	 * Original signature : <code>ViStatus viSPrintf(ViSession, ViPBuf, ViString, null)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:120</i>
+	 */
+	public static TLDFM_64Library.ViStatus viSPrintf(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, Pointer<Byte > writeFmt, Object... varArgs1) {
+		return viSPrintf(vi, Pointer.getPeer(buf), Pointer.getPeer(writeFmt), varArgs1);
+	}
+	protected native static TLDFM_64Library.ViStatus viSPrintf(@org.bridj.ann.CLong long vi, @Ptr long buf, @Ptr long writeFmt, Object... varArgs1);
+	/**
+	 * Original signature : <code>ViStatus viVSPrintf(ViSession, ViPBuf, ViString, ViVAList)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:121</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viVSPrintf(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, Pointer<Byte > writeFmt, TLDFM_64Library.va_list parms) {
+		return viVSPrintf(vi, Pointer.getPeer(buf), Pointer.getPeer(writeFmt), Pointer.getPeer((Pointer<?>) parms));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viVSPrintf(@org.bridj.ann.CLong long vi, @Ptr long buf, @Ptr long writeFmt, @Ptr long parms);
+	/**
+	 * Original signature : <code>ViStatus viScanf(ViSession, ViString, null)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:124</i>
+	 */
+	public static TLDFM_64Library.ViStatus viScanf(@org.bridj.ann.CLong long vi, Pointer<Byte > readFmt, Object... varArgs1) {
+		return viScanf(vi, Pointer.getPeer(readFmt), varArgs1);
+	}
+	protected native static TLDFM_64Library.ViStatus viScanf(@org.bridj.ann.CLong long vi, @Ptr long readFmt, Object... varArgs1);
+	/**
+	 * Original signature : <code>ViStatus viVScanf(ViSession, ViString, ViVAList)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:125</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viVScanf(@org.bridj.ann.CLong long vi, Pointer<Byte > readFmt, TLDFM_64Library.va_list params) {
+		return viVScanf(vi, Pointer.getPeer(readFmt), Pointer.getPeer((Pointer<?>) params));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viVScanf(@org.bridj.ann.CLong long vi, @Ptr long readFmt, @Ptr long params);
+	/**
+	 * Original signature : <code>ViStatus viSScanf(ViSession, ViBuf, ViString, null)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:126</i>
+	 */
+	public static TLDFM_64Library.ViStatus viSScanf(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, Pointer<Byte > readFmt, Object... varArgs1) {
+		return viSScanf(vi, Pointer.getPeer(buf), Pointer.getPeer(readFmt), varArgs1);
+	}
+	protected native static TLDFM_64Library.ViStatus viSScanf(@org.bridj.ann.CLong long vi, @Ptr long buf, @Ptr long readFmt, Object... varArgs1);
+	/**
+	 * Original signature : <code>ViStatus viVSScanf(ViSession, ViBuf, ViString, ViVAList)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:127</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viVSScanf(@org.bridj.ann.CLong long vi, Pointer<Byte > buf, Pointer<Byte > readFmt, TLDFM_64Library.va_list parms) {
+		return viVSScanf(vi, Pointer.getPeer(buf), Pointer.getPeer(readFmt), Pointer.getPeer((Pointer<?>) parms));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viVSScanf(@org.bridj.ann.CLong long vi, @Ptr long buf, @Ptr long readFmt, @Ptr long parms);
+	/**
+	 * Original signature : <code>ViStatus viQueryf(ViSession, ViString, ViString, null)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:130</i>
+	 */
+	public static TLDFM_64Library.ViStatus viQueryf(@org.bridj.ann.CLong long vi, Pointer<Byte > writeFmt, Pointer<Byte > readFmt, Object... varArgs1) {
+		return viQueryf(vi, Pointer.getPeer(writeFmt), Pointer.getPeer(readFmt), varArgs1);
+	}
+	protected native static TLDFM_64Library.ViStatus viQueryf(@org.bridj.ann.CLong long vi, @Ptr long writeFmt, @Ptr long readFmt, Object... varArgs1);
+	/**
+	 * Original signature : <code>ViStatus viVQueryf(ViSession, ViString, ViString, ViVAList)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:131</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viVQueryf(@org.bridj.ann.CLong long vi, Pointer<Byte > writeFmt, Pointer<Byte > readFmt, TLDFM_64Library.va_list params) {
+		return viVQueryf(vi, Pointer.getPeer(writeFmt), Pointer.getPeer(readFmt), Pointer.getPeer((Pointer<?>) params));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viVQueryf(@org.bridj.ann.CLong long vi, @Ptr long writeFmt, @Ptr long readFmt, @Ptr long params);
+	/**
+	 * - Memory I/O Operations ---------------------------------------------------<br>
+	 * Original signature : <code>ViStatus viIn8(ViSession, ViUInt16, ViBusAddress, ViPUInt8)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:136</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viIn8(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, Pointer<Byte > val8) {
+		return viIn8(vi, space, offset, Pointer.getPeer(val8));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viIn8(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @Ptr long val8);
+	/**
+	 * Original signature : <code>ViStatus viOut8(ViSession, ViUInt16, ViBusAddress, ViUInt8)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:138</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viOut8(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, byte val8);
+	/**
+	 * Original signature : <code>ViStatus viIn16(ViSession, ViUInt16, ViBusAddress, ViPUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:140</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viIn16(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, Pointer<Short > val16) {
+		return viIn16(vi, space, offset, Pointer.getPeer(val16));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viIn16(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @Ptr long val16);
+	/**
+	 * Original signature : <code>ViStatus viOut16(ViSession, ViUInt16, ViBusAddress, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:142</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viOut16(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, short val16);
+	/**
+	 * Original signature : <code>ViStatus viIn32(ViSession, ViUInt16, ViBusAddress, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:144</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viIn32(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, Pointer<org.bridj.CLong > val32) {
+		return viIn32(vi, space, offset, Pointer.getPeer(val32));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viIn32(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @Ptr long val32);
+	/**
+	 * Original signature : <code>ViStatus viOut32(ViSession, ViUInt16, ViBusAddress, ViUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:146</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viOut32(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long val32);
+	/**
+	 * Original signature : <code>ViStatus viMoveIn8(ViSession, ViUInt16, ViBusAddress, ViBusSize, ViAUInt8)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:173</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMoveIn8(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, Pointer<Byte > buf8) {
+		return viMoveIn8(vi, space, offset, length, Pointer.getPeer(buf8));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMoveIn8(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, @Ptr long buf8);
+	/**
+	 * Original signature : <code>ViStatus viMoveOut8(ViSession, ViUInt16, ViBusAddress, ViBusSize, ViAUInt8)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:175</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMoveOut8(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, Pointer<Byte > buf8) {
+		return viMoveOut8(vi, space, offset, length, Pointer.getPeer(buf8));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMoveOut8(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, @Ptr long buf8);
+	/**
+	 * Original signature : <code>ViStatus viMoveIn16(ViSession, ViUInt16, ViBusAddress, ViBusSize, ViAUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:177</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMoveIn16(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, Pointer<Short > buf16) {
+		return viMoveIn16(vi, space, offset, length, Pointer.getPeer(buf16));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMoveIn16(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, @Ptr long buf16);
+	/**
+	 * Original signature : <code>ViStatus viMoveOut16(ViSession, ViUInt16, ViBusAddress, ViBusSize, ViAUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:179</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMoveOut16(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, Pointer<Short > buf16) {
+		return viMoveOut16(vi, space, offset, length, Pointer.getPeer(buf16));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMoveOut16(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, @Ptr long buf16);
+	/**
+	 * Original signature : <code>ViStatus viMoveIn32(ViSession, ViUInt16, ViBusAddress, ViBusSize, ViAUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:181</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMoveIn32(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, Pointer<org.bridj.CLong > buf32) {
+		return viMoveIn32(vi, space, offset, length, Pointer.getPeer(buf32));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMoveIn32(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, @Ptr long buf32);
+	/**
+	 * Original signature : <code>ViStatus viMoveOut32(ViSession, ViUInt16, ViBusAddress, ViBusSize, ViAUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:183</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMoveOut32(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, Pointer<org.bridj.CLong > buf32) {
+		return viMoveOut32(vi, space, offset, length, Pointer.getPeer(buf32));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMoveOut32(@org.bridj.ann.CLong long vi, short space, @org.bridj.ann.CLong long offset, @org.bridj.ann.CLong long length, @Ptr long buf32);
+	/**
+	 * Original signature : <code>ViStatus viMove(ViSession, ViUInt16, ViBusAddress, ViUInt16, ViUInt16, ViBusAddress, ViUInt16, ViBusSize)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:210</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viMove(@org.bridj.ann.CLong long vi, short srcSpace, @org.bridj.ann.CLong long srcOffset, short srcWidth, short destSpace, @org.bridj.ann.CLong long destOffset, short destWidth, @org.bridj.ann.CLong long srcLength);
+	/**
+	 * Original signature : <code>ViStatus viMoveAsync(ViSession, ViUInt16, ViBusAddress, ViUInt16, ViUInt16, ViBusAddress, ViUInt16, ViBusSize, ViPJobId)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:214</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMoveAsync(@org.bridj.ann.CLong long vi, short srcSpace, @org.bridj.ann.CLong long srcOffset, short srcWidth, short destSpace, @org.bridj.ann.CLong long destOffset, short destWidth, @org.bridj.ann.CLong long srcLength, Pointer<org.bridj.CLong > jobId) {
+		return viMoveAsync(vi, srcSpace, srcOffset, srcWidth, destSpace, destOffset, destWidth, srcLength, Pointer.getPeer(jobId));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMoveAsync(@org.bridj.ann.CLong long vi, short srcSpace, @org.bridj.ann.CLong long srcOffset, short srcWidth, short destSpace, @org.bridj.ann.CLong long destOffset, short destWidth, @org.bridj.ann.CLong long srcLength, @Ptr long jobId);
+	/**
+	 * Original signature : <code>ViStatus viMapAddress(ViSession, ViUInt16, ViBusAddress, ViBusSize, ViBoolean, ViAddr, ViPAddr)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:230</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMapAddress(@org.bridj.ann.CLong long vi, short mapSpace, @org.bridj.ann.CLong long mapOffset, @org.bridj.ann.CLong long mapSize, short access, Pointer<? > suggested, Pointer<Pointer<? > > address) {
+		return viMapAddress(vi, mapSpace, mapOffset, mapSize, access, Pointer.getPeer(suggested), Pointer.getPeer(address));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMapAddress(@org.bridj.ann.CLong long vi, short mapSpace, @org.bridj.ann.CLong long mapOffset, @org.bridj.ann.CLong long mapSize, short access, @Ptr long suggested, @Ptr long address);
+	/**
+	 * Original signature : <code>ViStatus viUnmapAddress(ViSession)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:233</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viUnmapAddress(@org.bridj.ann.CLong long vi);
+	/**
+	 * Original signature : <code>void viPeek8(ViSession, ViAddr, ViPUInt8)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:241</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static void viPeek8(@org.bridj.ann.CLong long vi, Pointer<? > address, Pointer<Byte > val8) {
+		viPeek8(vi, Pointer.getPeer(address), Pointer.getPeer(val8));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static void viPeek8(@org.bridj.ann.CLong long vi, @Ptr long address, @Ptr long val8);
+	/**
+	 * Original signature : <code>void viPoke8(ViSession, ViAddr, ViUInt8)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:242</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static void viPoke8(@org.bridj.ann.CLong long vi, Pointer<? > address, byte val8) {
+		viPoke8(vi, Pointer.getPeer(address), val8);
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static void viPoke8(@org.bridj.ann.CLong long vi, @Ptr long address, byte val8);
+	/**
+	 * Original signature : <code>void viPeek16(ViSession, ViAddr, ViPUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:243</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static void viPeek16(@org.bridj.ann.CLong long vi, Pointer<? > address, Pointer<Short > val16) {
+		viPeek16(vi, Pointer.getPeer(address), Pointer.getPeer(val16));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static void viPeek16(@org.bridj.ann.CLong long vi, @Ptr long address, @Ptr long val16);
+	/**
+	 * Original signature : <code>void viPoke16(ViSession, ViAddr, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:244</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static void viPoke16(@org.bridj.ann.CLong long vi, Pointer<? > address, short val16) {
+		viPoke16(vi, Pointer.getPeer(address), val16);
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static void viPoke16(@org.bridj.ann.CLong long vi, @Ptr long address, short val16);
+	/**
+	 * Original signature : <code>void viPeek32(ViSession, ViAddr, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:245</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static void viPeek32(@org.bridj.ann.CLong long vi, Pointer<? > address, Pointer<org.bridj.CLong > val32) {
+		viPeek32(vi, Pointer.getPeer(address), Pointer.getPeer(val32));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static void viPeek32(@org.bridj.ann.CLong long vi, @Ptr long address, @Ptr long val32);
+	/**
+	 * Original signature : <code>void viPoke32(ViSession, ViAddr, ViUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:246</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static void viPoke32(@org.bridj.ann.CLong long vi, Pointer<? > address, @org.bridj.ann.CLong long val32) {
+		viPoke32(vi, Pointer.getPeer(address), val32);
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static void viPoke32(@org.bridj.ann.CLong long vi, @Ptr long address, @org.bridj.ann.CLong long val32);
+	/**
+	 * - Shared Memory Operations ------------------------------------------------<br>
+	 * Original signature : <code>ViStatus viMemAlloc(ViSession, ViBusSize, ViPBusAddress)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:255</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viMemAlloc(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long size, Pointer<org.bridj.CLong > offset) {
+		return viMemAlloc(vi, size, Pointer.getPeer(offset));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viMemAlloc(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long size, @Ptr long offset);
+	/**
+	 * Original signature : <code>ViStatus viMemFree(ViSession, ViBusAddress)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:256</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viMemFree(@org.bridj.ann.CLong long vi, @org.bridj.ann.CLong long offset);
+	/**
+	 * - Interface Specific Operations -------------------------------------------<br>
+	 * Original signature : <code>ViStatus viGpibControlREN(ViSession, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:265</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viGpibControlREN(@org.bridj.ann.CLong long vi, short mode);
+	/**
+	 * Original signature : <code>ViStatus viGpibControlATN(ViSession, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:266</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viGpibControlATN(@org.bridj.ann.CLong long vi, short mode);
+	/**
+	 * Original signature : <code>ViStatus viGpibSendIFC(ViSession)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:267</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viGpibSendIFC(@org.bridj.ann.CLong long vi);
+	/**
+	 * Original signature : <code>ViStatus viGpibCommand(ViSession, ViBuf, ViUInt32, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:268</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viGpibCommand(@org.bridj.ann.CLong long vi, Pointer<Byte > cmd, @org.bridj.ann.CLong long cnt, Pointer<org.bridj.CLong > retCnt) {
+		return viGpibCommand(vi, Pointer.getPeer(cmd), cnt, Pointer.getPeer(retCnt));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viGpibCommand(@org.bridj.ann.CLong long vi, @Ptr long cmd, @org.bridj.ann.CLong long cnt, @Ptr long retCnt);
+	/**
+	 * Original signature : <code>ViStatus viGpibPassControl(ViSession, ViUInt16, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:269</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viGpibPassControl(@org.bridj.ann.CLong long vi, short primAddr, short secAddr);
+	/**
+	 * Original signature : <code>ViStatus viVxiCommandQuery(ViSession, ViUInt16, ViUInt32, ViPUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:271</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viVxiCommandQuery(@org.bridj.ann.CLong long vi, short mode, @org.bridj.ann.CLong long cmd, Pointer<org.bridj.CLong > response) {
+		return viVxiCommandQuery(vi, mode, cmd, Pointer.getPeer(response));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viVxiCommandQuery(@org.bridj.ann.CLong long vi, short mode, @org.bridj.ann.CLong long cmd, @Ptr long response);
+	/**
+	 * Original signature : <code>ViStatus viAssertUtilSignal(ViSession, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:273</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viAssertUtilSignal(@org.bridj.ann.CLong long vi, short line);
+	/**
+	 * Original signature : <code>ViStatus viAssertIntrSignal(ViSession, ViInt16, ViUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:274</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viAssertIntrSignal(@org.bridj.ann.CLong long vi, short mode, @org.bridj.ann.CLong long statusID);
+	/**
+	 * Original signature : <code>ViStatus viMapTrigger(ViSession, ViInt16, ViInt16, ViUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:275</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viMapTrigger(@org.bridj.ann.CLong long vi, short trigSrc, short trigDest, short mode);
+	/**
+	 * Original signature : <code>ViStatus viUnmapTrigger(ViSession, ViInt16, ViInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:277</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viUnmapTrigger(@org.bridj.ann.CLong long vi, short trigSrc, short trigDest);
+	/**
+	 * Original signature : <code>ViStatus viUsbControlOut(ViSession, ViInt16, ViInt16, ViUInt16, ViUInt16, ViUInt16, ViBuf)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:278</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viUsbControlOut(@org.bridj.ann.CLong long vi, short bmRequestType, short bRequest, short wValue, short wIndex, short wLength, Pointer<Byte > buf) {
+		return viUsbControlOut(vi, bmRequestType, bRequest, wValue, wIndex, wLength, Pointer.getPeer(buf));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viUsbControlOut(@org.bridj.ann.CLong long vi, short bmRequestType, short bRequest, short wValue, short wIndex, short wLength, @Ptr long buf);
+	/**
+	 * Original signature : <code>ViStatus viUsbControlIn(ViSession, ViInt16, ViInt16, ViUInt16, ViUInt16, ViUInt16, ViPBuf, ViPUInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:281</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viUsbControlIn(@org.bridj.ann.CLong long vi, short bmRequestType, short bRequest, short wValue, short wIndex, short wLength, Pointer<Byte > buf, Pointer<Short > retCnt) {
+		return viUsbControlIn(vi, bmRequestType, bRequest, wValue, wIndex, wLength, Pointer.getPeer(buf), Pointer.getPeer(retCnt));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viUsbControlIn(@org.bridj.ann.CLong long vi, short bmRequestType, short bRequest, short wValue, short wIndex, short wLength, @Ptr long buf, @Ptr long retCnt);
+	/**
+	 * Original signature : <code>ViStatus viPxiReserveTriggers(ViSession, ViInt16, ViAInt16, ViAInt16, ViPInt16)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:284</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static TLDFM_64Library.ViStatus viPxiReserveTriggers(@org.bridj.ann.CLong long vi, short cnt, Pointer<Short > trigBuses, Pointer<Short > trigLines, Pointer<Short > failureIndex) {
+		return viPxiReserveTriggers(vi, cnt, Pointer.getPeer(trigBuses), Pointer.getPeer(trigLines), Pointer.getPeer(failureIndex));
+	}
+	@Convention(Convention.Style.StdCall) 
+	protected native static TLDFM_64Library.ViStatus viPxiReserveTriggers(@org.bridj.ann.CLong long vi, short cnt, @Ptr long trigBuses, @Ptr long trigLines, @Ptr long failureIndex);
+	/**
+	 * This is for VXI SERVANT resources<br>
+	 * Original signature : <code>ViStatus viVxiServantResponse(ViSession, ViInt16, ViUInt32)</code><br>
+	 * <i>native declaration : lib\dmp40\visa.h:908</i>
+	 */
+	@Convention(Convention.Style.StdCall) 
+	public static native TLDFM_64Library.ViStatus viVxiServantResponse(@org.bridj.ann.CLong long vi, short mode, @org.bridj.ann.CLong long resp);
 	/** Undefined type */
-	public static interface StatusUpdate {
+	public static interface va_list {
 		
 	};
 	/** Undefined type */
-	public static interface ViChar {
-		
-	};
-	/** Undefined type */
-	public static interface ViSession {
-		
-	};
-	/** Undefined type */
-	public static interface ViReal64 {
-		
-	};
-	/** Undefined type */
-	public static interface ViStatus {
-		
-	};
-	/** Undefined type */
-	public static interface _VI_FUNC {
-		
-	};
-	/** Undefined type */
-	public static interface ViInt32 {
-		
-	};
-	/** Undefined type */
-	public static interface ViBoolean {
-		
-	};
-	/** Undefined type */
-	public static interface ViString {
-		
-	};
-	/** Undefined type */
-	public static interface ViRsrc {
-		
-	};
-	/** Undefined type */
-	public static interface ViUInt32 {
-		
-	};
-	/** Undefined type */
-	public static interface ViInt16 {
+	public static interface ViHndlr {
 		
 	};
 }
