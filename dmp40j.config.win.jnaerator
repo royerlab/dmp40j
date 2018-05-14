@@ -4,12 +4,18 @@
 -o src/
 -rootPackage src
 -package dmp40j.bindings
--arch win64 
--libFile lib/dmp40/TLDFM_64.lib 
--dependencies TLDFM_64.dll
+-arch win64
+-dependencies lib/dmp40/TLDFM_64.dll lib/dmp40/TLDFMX_64.dll lib/dmp40/NiViAsrl.dll lib/dmp40/NiViEnetAsrl.dll lib/dmp40/NiViPxi.dll lib/dmp40/NiViUsb.dll
 -runtime BridJ
 -mode Directory
+lib/dmp40/visatype.h
 lib/dmp40/TLDFM.h
+lib/dmp40/TLDFM_def.h
+lib/dmp40/TLDFMX.h
+lib/dmp40/TLDFMX_def.h
+lib/dmp40/visa.h
+lib/dmp40/vpptype.h
+
 
 
 #GdiPlus.dll
