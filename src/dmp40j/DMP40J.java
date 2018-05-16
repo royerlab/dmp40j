@@ -1,8 +1,12 @@
 package dmp40j;
 
+import dmp40j.bindings.TLDFM_32Library;
 import dmp40j.bindings.TLDFM_64Library;
+import dmp40j.bindings.TLDSTPLibrary;
 import org.bridj.CLong;
 import org.bridj.Pointer;
+
+import static dmp40j.bindings.TLDFM_64Library.VI_TRUE;
 
 /**
  * DMP40J
@@ -24,7 +28,7 @@ public class DMP40J {
 
         Pointer<CLong> lInstrumentHandle = Pointer.allocateCLong();
 
-        TLDFM_64Library.TLDFM_init(lPointerToSerialNumber, (short)0, (short)0, lInstrumentHandle);
+        TLDFM_64Library.TLDFM_init(lPointerToSerialNumber, (short) VI_TRUE, (short) VI_TRUE, lInstrumentHandle);
 
         mInstrumentHandle = lInstrumentHandle.getLong();
 
