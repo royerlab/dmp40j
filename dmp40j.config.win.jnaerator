@@ -9,6 +9,8 @@
 -runtime BridJ
 -mode Directory
 lib/dmp40/visatype.h
+lib/dmp40/TLDSTP.h
+lib/dmp40/TLDSTP_def.h
 lib/dmp40/TLDFM.h
 lib/dmp40/TLDFM_def.h
 lib/dmp40/TLDFMX.h
