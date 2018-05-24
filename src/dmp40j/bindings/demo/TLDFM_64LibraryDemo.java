@@ -3,6 +3,8 @@ package dmp40j.bindings.demo;
 import org.bridj.CLong;
 import org.bridj.Pointer;
 
+import static dmp40j.DMP40J.MAX_SEGMENTS;
+import static dmp40j.DMP40J.VI_FIND_BUFLEN;
 import static dmp40j.DMP40J.translateStatus;
 import static dmp40j.bindings.TLDFM_64Library.*;
 
@@ -20,9 +22,6 @@ import static dmp40j.bindings.TLDFM_64Library.*;
 public class TLDFM_64LibraryDemo {
 
 
-    final static int VI_FIND_BUFLEN = 256;
-
-    final static int MAX_SEGMENTS = 40;
 
     public static void main(String... args) {
 

@@ -8,13 +8,14 @@ import org.junit.experimental.theories.PotentialAssignment;
 import java.awt.*;
 import java.util.Arrays;
 
+import static dmp40j.DMP40J.MAX_SEGMENTS;
+import static dmp40j.DMP40J.VI_FIND_BUFLEN;
 import static dmp40j.DMP40J.translateStatus;
 import static dmp40j.bindings.TLDFMX_64Library.*;
 import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_zernike_flag_t.Z_Def_Flag;
 import static dmp40j.bindings.TLDFM_64Library.*;
 import static dmp40j.bindings.TLDFM_64Library.VI_NULL;
 import static dmp40j.bindings.TLDFM_64Library.VI_TRUE;
-import static dmp40j.bindings.demo.TLDFM_64LibraryDemo.MAX_SEGMENTS;
 
 /**
  * TLDFMX_64LibraryDemo
@@ -26,9 +27,6 @@ import static dmp40j.bindings.demo.TLDFM_64LibraryDemo.MAX_SEGMENTS;
  * 05 2018
  */
 public class TLDFMX_64LibraryDemo {
-
-
-    final static int VI_FIND_BUFLEN = 256;
 
 
     public static void main(String... args) {
@@ -138,21 +136,6 @@ public class TLDFMX_64LibraryDemo {
         relaxSteps.release();
         minZernikeAmplitude.release();
         maxZernikeAmplitude.release();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

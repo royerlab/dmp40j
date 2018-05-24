@@ -20,21 +20,9 @@ import static dmp40j.bindings.TLDFM_64Library.*;
  */
 public class DMP40J {
 
-    Object mLock = new Object();
+    public final static int VI_FIND_BUFLEN = 256;
 
-
-    long mInstrumentHandle;
-
-    public DMP40J(String pDeviceSerialName) {
-
-
-    }
-
-
-    public String getLastErrorString()
-    {
-        return "";
-    }
+    public final static int MAX_SEGMENTS = 40;
 
     public static String translateStatus(long status) {
         switch ((int) status){

@@ -1,6 +1,9 @@
 package dmp40j.demo;
 
-import dmp40j.DMP40J;
+import dmp40j.DMP40JDevice;
+
+import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_zernike_flag_t.Z_Ast0_Flag;
+import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_zernike_flag_t.Z_Def_Flag;
 
 /**
  * DMP40JDemo
@@ -11,7 +14,24 @@ import dmp40j.DMP40J;
  * 05 2018
  */
 public class DMP40JDemo {
-    public static void main(String... args) {
-        new DMP40J("M00456037");
+    public static void main(String... args) throws Exception {
+
+        DMP40JDevice mirror = new DMP40JDevice("M00456037");
+
+        if (mirror.open()) {
+
+            System.out.println("The mirror has serial number " + mirror.getSerialNumber());
+            System.out.println("This mirror supports " + mirror.getNumberOfZernikeFactors() + " zernike factors.");
+            System.out.println("Zernike factors should range between " + mirror.getMinZernikeAmplitude() + " and " + mirror.getMaxZernikeAmplitude());
+
+            double[] zernikeFactors = new double[mirror.getNumberOfZernikeFactors()];
+            zernikeFactors[(int)Z_Def_Flag.value] = mirror.getMinZernikeAmplitude();
+            zernikeFactors[(int)Z_Ast0_Flag.value] = mirror.getMaxZernikeAmplitude();
+
+            mirror.setZernikeFactors(zernikeFactors);
+            mirror.close();
+        } else {
+            System.out.println("Could not connect to mirror " + mirror.getSerialNumber());
+        }
     }
 }
