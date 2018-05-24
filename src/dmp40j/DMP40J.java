@@ -22,127 +22,12 @@ public class DMP40J {
 
     Object mLock = new Object();
 
-    final static int VI_FIND_BUFLEN = 256;
 
     long mInstrumentHandle;
 
     public DMP40J(String pDeviceSerialName) {
 
 
-        Pointer<CLong> lInstrumentCount = Pointer.allocateCLong();
-
-        TLDFM_get_device_count(VI_NULL, lInstrumentCount);
-
-        System.out.println("Number of devices: " + lInstrumentCount.getInt());
-
-        Pointer<Byte> manufacturer = Pointer.allocateBytes(TLDFM_BUFFER_SIZE);
-        Pointer<Byte> instrumentName = Pointer.allocateBytes(TLDFM_MAX_INSTR_NAME_LENGTH);
-        Pointer<Byte> serialNumber = Pointer.allocateBytes(TLDFM_MAX_SN_LENGTH);
-        Pointer<Short> deviceAvailable = Pointer.allocateShort();
-        Pointer<Byte> resourceName = Pointer.allocateBytes(VI_FIND_BUFLEN);
-
-        for (int i = 0; i < lInstrumentCount.getInt(); i++) {
-
-            long err = TLDFM_get_device_information(VI_NULL,
-                    i,
-                    manufacturer,
-                    instrumentName,
-                    serialNumber,
-                    deviceAvailable,
-                    resourceName);
-
-            System.out.println("Read device information: " + translateStatus(err));
-
-            System.out.println("device index:" + i + "\n" +
-                    "manufacturer: " + manufacturer.getCString() + "\n" +
-                            "instrumentname: " + instrumentName.getCString()  + "\n" +
-                            "serial number: " + serialNumber.getCString()  + "\n" +
-                    (deviceAvailable.getShort() != 0 ? "available" : "locked") + "\n" +
-                    "resource: " + resourceName.getCString());
-
-
-        }
-
-
-
-        // connect to the last mirror
-
-        Pointer<CLong> instrumentHandle = Pointer.allocateCLong();
-        long err = TLDFM_init(resourceName, (short)VI_TRUE, (short)VI_TRUE, instrumentHandle);
-        System.out.println("Connecting to " + resourceName.getCString() + " status: " + translateStatus(err));
-        System.out.println("Handle: " + instrumentHandle.getInt());
-
-        // read device info
-
-        Pointer<CLong> segments = Pointer.allocateCLong();
-        Pointer<CLong> tiltElements = Pointer.allocateCLong();
-        Pointer<Double> voltageMirrorMin = Pointer.allocateDouble();
-        Pointer<Double> voltageMirrorMax = Pointer.allocateDouble();
-        Pointer<Double> voltageMirrorCommon = Pointer.allocateDouble();
-        Pointer<Double> voltageTiltMin = Pointer.allocateDouble();
-        Pointer<Double> voltageTiltMax = Pointer.allocateDouble();
-        Pointer<Double> voltageTiltCommon = Pointer.allocateDouble();
-
-        err = TLDFM_get_device_configuration(instrumentHandle.getInt(),
-                segments,
-										voltageMirrorMin,
-										voltageMirrorMax,
-										voltageMirrorCommon,
-										tiltElements,
-										voltageTiltMin,
-										voltageTiltMax,
-										voltageTiltCommon);
-
-        System.out.println("Get device configuration status: " + translateStatus(err));
-
-        // if(err) error_exit(instrHdl, err);
-        System.out.println("\nNumber of Segments        :" + segments.getInt());
-        System.out.println("Min. Voltage              :" + voltageMirrorMin.getDouble());
-        System.out.println("Max. Voltage              :" + voltageMirrorMax.getDouble());
-        System.out.println("No. of Tip/Tilt Elements  :" + tiltElements.getInt());
-        System.out.println("Min. Voltage              :" + voltageTiltMin.getDouble());
-        System.out.println("Max. Voltage              :" + voltageMirrorMax.getDouble());
-
-
-        /*
-
-        final Pointer<Byte> lPointerToSerialNumber = Pointer.pointerToCString(pDeviceSerialName);
-        System.out.println("Connecting to SN " + lPointerToSerialNumber.getCString().toString());
-
-        Pointer<CLong> lInstrumentHandle = Pointer.allocateCLong();
-
-        long initStatus = TLDFM_64Library.TLDFM_init(lPointerToSerialNumber, (short) VI_TRUE, (short) VI_TRUE, lInstrumentHandle);
-        System.out.println("init status: " + translateStatus(initStatus));
-
-        mInstrumentHandle = lInstrumentHandle.getInt();
-
-        System.out.println("Instrument handle: " + mInstrumentHandle);
-
-
-
-
-
-        Pointer<Byte> lPointerToReadSerialNumber = Pointer.allocateBytes(1024);
-
-
-        TLDFM_64Library.TLDFM_get_manufacturer_name(lInstrumentHandle.getPeer(), lPointerToReadSerialNumber);
-
-        System.out.println(lPointerToReadSerialNumber.toString());
-        System.out.println(lPointerToReadSerialNumber.getCString().toString());
-        System.out.println(lPointerToReadSerialNumber.get(1));
-        System.out.println(lPointerToReadSerialNumber.get(2));
-
-        lPointerToReadSerialNumber.release();
-
-
-        final Pointer<Byte> manufacturerName = Pointer.allocateBytes(256);
-        TLDFM_64Library.TLDFM_get_manufacturer_name(mInstrumentHandle, manufacturerName);
-
-
-        TLDFM_64Library.TLDFM_close(mInstrumentHandle);
-        lInstrumentHandle.release();
-        lPointerToSerialNumber.release();
-        */
     }
 
 
@@ -151,7 +36,7 @@ public class DMP40J {
         return "";
     }
 
-    private String translateStatus(long status) {
+    public static String translateStatus(long status) {
         switch ((int) status){
 
             // Source: visa.h:
