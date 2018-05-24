@@ -3,6 +3,7 @@ package dmp40j.demo;
 import dmp40j.DMP40JDevice;
 
 import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_zernike_flag_t.Z_Ast0_Flag;
+import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_zernike_flag_t.Z_ComX_Flag;
 import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_zernike_flag_t.Z_Def_Flag;
 
 /**
@@ -29,6 +30,19 @@ public class DMP40JDemo {
             zernikeFactors[(int)Z_Ast0_Flag.value] = mirror.getMaxZernikeAmplitude();
 
             mirror.setZernikeFactors(zernikeFactors);
+
+            Thread.sleep(1000);
+
+            for (int i = 0; i < 100; i++){
+                switch(i % 4) {
+                    case 0: mirror.setSingleZernikeFactor(Z_ComX_Flag, mirror.getMinZernikeAmplitude()); break;
+                    case 1: mirror.setSingleZernikeFactor(Z_ComX_Flag, 0); break;
+                    case 2: mirror.setSingleZernikeFactor(Z_ComX_Flag, mirror.getMaxZernikeAmplitude()); break;
+                    default: mirror.setSingleZernikeFactor(Z_ComX_Flag, 0); break;
+                }
+                Thread.sleep(1000);
+            }
+
             mirror.close();
         } else {
             System.out.println("Could not connect to mirror " + mirror.getSerialNumber());

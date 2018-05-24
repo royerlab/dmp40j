@@ -1,11 +1,13 @@
 package dmp40j;
 
+import dmp40j.bindings.TLDFMX_64Library;
 import org.bridj.CLong;
 import org.bridj.Pointer;
 
 import static dmp40j.DMP40J.MAX_SEGMENTS;
 import static dmp40j.DMP40J.VI_FIND_BUFLEN;
 import static dmp40j.DMP40J.translateStatus;
+import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_calculate_single_zernike_pattern;
 import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_calculate_zernike_pattern;
 import static dmp40j.bindings.TLDFMX_64Library.TLDFMX_get_parameters;
 import static dmp40j.bindings.TLDFM_64Library.*;
@@ -312,11 +314,30 @@ public class DMP40JDevice implements AutoCloseable {
         synchronized (lock) {
 
             long err = TLDFMX_calculate_zernike_pattern(instrumentHandle, zernikeFactorCount, zernikeFactorsPointer, segmentVoltagesPointer);
-            System.out.println("\nCalculate single zernike pattern status: " + translateStatus(err));
+            System.out.println("\nCalculate zernike pattern status: " + translateStatus(err));
         }
         boolean result = setRawMirrorShapeVector(segmentVoltagesPointer);
         segmentVoltagesPointer.release();
         zernikeFactorsPointer.release();
+
+        return result;
+    }
+
+    public boolean setSingleZernikeFactor(TLDFMX_64Library.TLDFMX_zernike_flag_t flag, double zernikeFactor) {
+
+
+
+        Pointer<Double> segmentVoltagesPointer = Pointer.allocateDoubles(MAX_SEGMENTS);
+        synchronized (lock) {
+
+            long err = TLDFMX_calculate_single_zernike_pattern(instrumentHandle,
+                    flag,
+                    zernikeFactor,
+                    segmentVoltagesPointer);
+            System.out.println("\nCalculate single zernike pattern status: " + translateStatus(err));
+        }
+        boolean result = setRawMirrorShapeVector(segmentVoltagesPointer);
+        segmentVoltagesPointer.release();
 
         return result;
     }
