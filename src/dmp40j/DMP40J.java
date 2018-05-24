@@ -57,10 +57,52 @@ public class DMP40J {
                     "manufacturer: " + manufacturer.getCString() + "\n" +
                             "instrumentname: " + instrumentName.getCString()  + "\n" +
                             "serial number: " + serialNumber.getCString()  + "\n" +
-                    (deviceAvailable.getShort() != 0 ? "available" : "locked"));
+                    (deviceAvailable.getShort() != 0 ? "available" : "locked") + "\n" +
+                    "resource: " + resourceName.getCString());
 
 
         }
+
+
+
+        // connect to the last mirror
+
+        Pointer<CLong> instrumentHandle = Pointer.allocateCLong();
+        long err = TLDFM_init(resourceName, (short)VI_TRUE, (short)VI_TRUE, instrumentHandle);
+        System.out.println("Connecting to " + resourceName.getCString() + " status: " + translateStatus(err));
+        System.out.println("Handle: " + instrumentHandle.getInt());
+
+        // read device info
+
+        Pointer<CLong> segments = Pointer.allocateCLong();
+        Pointer<CLong> tiltElements = Pointer.allocateCLong();
+        Pointer<Double> voltageMirrorMin = Pointer.allocateDouble();
+        Pointer<Double> voltageMirrorMax = Pointer.allocateDouble();
+        Pointer<Double> voltageMirrorCommon = Pointer.allocateDouble();
+        Pointer<Double> voltageTiltMin = Pointer.allocateDouble();
+        Pointer<Double> voltageTiltMax = Pointer.allocateDouble();
+        Pointer<Double> voltageTiltCommon = Pointer.allocateDouble();
+
+        err = TLDFM_get_device_configuration(instrumentHandle.getInt(),
+                segments,
+										voltageMirrorMin,
+										voltageMirrorMax,
+										voltageMirrorCommon,
+										tiltElements,
+										voltageTiltMin,
+										voltageTiltMax,
+										voltageTiltCommon);
+
+        System.out.println("Get device configuration status: " + translateStatus(err));
+
+        // if(err) error_exit(instrHdl, err);
+        System.out.println("\nNumber of Segments        :" + segments.getInt());
+        System.out.println("Min. Voltage              :" + voltageMirrorMin.getDouble());
+        System.out.println("Max. Voltage              :" + voltageMirrorMax.getDouble());
+        System.out.println("No. of Tip/Tilt Elements  :" + tiltElements.getInt());
+        System.out.println("Min. Voltage              :" + voltageTiltMin.getDouble());
+        System.out.println("Max. Voltage              :" + voltageMirrorMax.getDouble());
+
 
         /*
 
