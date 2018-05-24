@@ -1,0 +1,11 @@
+-library TLDFMX_64
+#!-beautifyNames
+-f
+-o src\
+-rootPackage src
+-package dmp40j.bindings
+-arch win64
+-runtime BridJ
+-mode Directory
+-dependencies C:\structure\code\dmp40j\lib\dmp40\TLDFM_64.dll C:\structure\code\dmp40j\lib\dmp40\TLDFMX_64.dll
+lib\dmp40\TLDFMX.h

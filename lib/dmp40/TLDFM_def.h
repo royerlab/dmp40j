@@ -18,7 +18,7 @@ extern "C" {
 
 //==============================================================================
 // Include files
-#include <vpptype.h>
+#include "vpptype.h"
 
 //==============================================================================
 // Constants
@@ -79,10 +79,6 @@ extern "C" {
 #define TLDFM_SELFTEST_PWR_ERR          0x0001
 #define TLDFM_SELFTEST_TEMP_ERR         0x0010
 
-#define T_MIRROR						(0)
-#define T_TILT							(1)
-#define T_BOTH							(2)
-
 
 
 //==============================================================================
@@ -93,6 +89,14 @@ typedef enum
    SM_Manual,
    
 } TLDFM_Switch_Mode;
+
+typedef enum
+{
+   T_Mirror = 0,
+   T_Tilt   = 1,
+   T_Both,
+   
+} TLDFM_Target;
 
 typedef enum
 {

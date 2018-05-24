@@ -67,10 +67,10 @@ ViStatus _VI_FUNC TLDFM_revision_query                (ViSession  instrumentHand
 
 //******************************************************************************
 
-ViStatus _VI_FUNC TLDFM_set_USB_access_mode           (ViSession instrumentHandle,
-                                                       ViUInt32  accessMode,
-                                                       ViString  requestedKey,
-                                                       ViChar    accessKey[]);
+ViStatus _VI_FUNC TLDFM_set_USB_access_mode           (ViSession         instrumentHandle,
+                                                       TLDFM_Access_Mode accessMode,
+                                                       ViString          requestedKey,
+                                                       ViChar            accessKey[]);
 
 //******************************************************************************
 // segment voltage functions
@@ -192,67 +192,67 @@ ViStatus _VI_FUNC TLDFM_get_device_configuration      (ViSession instrumentHandl
                                                        ViReal64* pMaxTiltVoltage,
                                                        ViReal64* pTiltCommonVoltageMax);
 
-ViStatus _VI_FUNC TLDFM_set_device_configuration		(ViSession instrumentHandle,
-														 ViUInt32  segmentCnt,
-														 ViReal64  minSegmentVoltage,
-														 ViReal64  maxSegmentVoltage,
-														 ViReal64  segmentCommonVoltageMax,
-														 ViUInt32  tiltElementCnt,
-														 ViReal64  minTiltVoltage,
-														 ViReal64  maxTiltVoltage,
-														 ViReal64  tiltCommonVoltageMax);
+ViStatus _VI_FUNC TLDFM_set_device_configuration      (ViSession instrumentHandle,
+                                                       ViUInt32  segmentCnt,
+                                                       ViReal64  minSegmentVoltage,
+                                                       ViReal64  maxSegmentVoltage,
+                                                       ViReal64  segmentCommonVoltageMax,
+                                                       ViUInt32  tiltElementCnt,
+                                                       ViReal64  minTiltVoltage,
+                                                       ViReal64  maxTiltVoltage,
+                                                       ViReal64  tiltCommonVoltageMax);
 
-ViStatus _VI_FUNC TLDFM_get_device_calibration			(ViSession instrumentHandle,
-														 ViReal64* pSegmentVoltageCompensation,
-														 ViReal64* pTiltVoltageCompensation,
-														 ViReal64* pSingleSegmentTiltVoltage);
+ViStatus _VI_FUNC TLDFM_get_device_calibration        (ViSession instrumentHandle,
+                                                       ViReal64* pSegmentVoltageCompensation,
+                                                       ViReal64* pTiltVoltageCompensation,
+                                                       ViReal64* pSingleSegmentTiltVoltage);
 
-ViStatus _VI_FUNC TLDFM_set_device_calibration			(ViSession instrumentHandle,
-														 ViReal64  segmentVoltageCompensation,
-														 ViReal64  tiltVoltageCompensation,
-														 ViReal64  singleSegmentTiltVoltage);
+ViStatus _VI_FUNC TLDFM_set_device_calibration        (ViSession instrumentHandle,
+                                                       ViReal64  segmentVoltageCompensation,
+                                                       ViReal64  tiltVoltageCompensation,
+                                                       ViReal64  singleSegmentTiltVoltage);
 
-ViStatus _VI_FUNC TLDFM_get_hysteresis_parameters		(ViSession instrumentHandle,
-														 ViUInt32  target,
-														 ViUInt32* pCount,
-														 ViReal64* pNonlinearFactor,
-														 ViReal64  arrayTresholdInverter[],
-														 ViReal64  arrayWeightInverter[]);
+ViStatus _VI_FUNC TLDFM_get_hysteresis_parameters     (ViSession    instrumentHandle,
+                                                       TLDFM_Target target,
+                                                       ViUInt32*    pCount,
+                                                       ViReal64*    pNonlinearFactor,
+                                                       ViReal64     arrayTresholdInverter[],
+                                                       ViReal64     arrayWeightInverter[]);
 
-ViStatus _VI_FUNC TLDFM_set_hysteresis_parameters		(ViSession instrumentHandle,
-														 ViUInt32  target,
-														 ViUInt32  count,
-														 ViReal64  nonlinearFactor,
-														 ViReal64  arrayTresholdInverter[],
-														 ViReal64  arrayWeightInverter[]);
+ViStatus _VI_FUNC TLDFM_set_hysteresis_parameters     (ViSession    instrumentHandle,
+                                                       TLDFM_Target target,
+                                                       ViUInt32     count,
+                                                       ViReal64     nonlinearFactor,
+                                                       ViReal64     arrayTresholdInverter[],
+                                                       ViReal64     arrayWeightInverter[]);
 
-ViStatus _VI_FUNC TLDFM_enabled_hysteresis_compensation (ViSession  instrumentHandle,
-                                                         ViUInt32   target,
-                                                         ViBoolean* pEnabled);
+ViStatus _VI_FUNC TLDFM_enabled_hysteresis_compensation (ViSession    instrumentHandle,
+                                                         TLDFM_Target target,
+                                                         ViBoolean*   pEnabled);
 
-ViStatus _VI_FUNC TLDFM_enable_hysteresis_compensation  (ViSession instrumentHandle,
-                                                         ViUInt32  target,
-                                                         ViBoolean enable);
+ViStatus _VI_FUNC TLDFM_enable_hysteresis_compensation  (ViSession    instrumentHandle,
+                                                         TLDFM_Target target,
+                                                         ViBoolean    enable);
 
 //******************************************************************************
 
-ViStatus _VI_FUNC TLDFM_get_measured_segment_voltage  (ViSession instrumentHandle,
-													   ViUInt32  segmentIndex,
-													   ViReal64* pSegmentVoltage);
+ViStatus _VI_FUNC TLDFM_get_measured_segment_voltage (ViSession instrumentHandle,
+													  ViUInt32  segmentIndex,
+													  ViReal64* pSegmentVoltage);
 
 ViStatus _VI_FUNC TLDFM_get_measured_segment_voltages (ViSession instrumentHandle,
 													   ViReal64  segmentVoltages[]);
 
-ViStatus _VI_FUNC TLDFM_get_measured_tilt_voltage	  (ViSession instrumentHandle,
-													   ViUInt32  tiltIndex,
-													   ViReal64* pTiltVoltage);
+ViStatus _VI_FUNC TLDFM_get_measured_tilt_voltage (ViSession instrumentHandle,
+												   ViUInt32  tiltIndex,
+												   ViReal64* pTiltVoltage);
 
-ViStatus _VI_FUNC TLDFM_get_measured_tilt_voltages	  (ViSession instrumentHandle,
-													   ViReal64  tiltVoltages[]);
+ViStatus _VI_FUNC TLDFM_get_measured_tilt_voltages (ViSession instrumentHandle,
+													ViReal64  tiltVoltages[]);
 
-ViStatus _VI_FUNC TLDFM_get_measured_voltages 		  (ViSession instrumentHandle,
-													   ViReal64  segmentVoltages[],
-													   ViReal64  tiltVoltages[]);
+ViStatus _VI_FUNC TLDFM_get_measured_voltages (ViSession instrumentHandle,
+											   ViReal64  segmentVoltages[],
+											   ViReal64  tiltVoltages[]);
 
 ViStatus _VI_FUNC TLDFM_get_feedback_voltage          (ViSession instrumentHandle,
                                                        ViReal64* pFeedbackVoltage);

@@ -55,13 +55,13 @@ ViStatus _VI_FUNC TLDFMX_revision_query (ViSession instrumentHandle,
 //==============================================================================
 // Action/Status Functions
 
-ViStatus _VI_FUNC TLDFMX_relax (ViSession instrumentHandle,
-								ViUInt32  devicePart,
-								ViBoolean isFirstStep,
-								ViBoolean reload,
-								ViReal64  relaxPatternMirror[],
-								ViReal64  relaxPatternArms[],
-								ViInt32*  pRemainingSteps);
+ViStatus _VI_FUNC TLDFMX_relax (ViSession    instrumentHandle,
+								TLDFM_Target devicePart,
+								ViBoolean    isFirstStep,
+								ViBoolean    reload,
+								ViReal64     relaxPatternMirror[],
+								ViReal64     relaxPatternArms[],
+								ViInt32*     pRemainingSteps);
 
 ViStatus _VI_FUNC TLDFMX_measure_system_parameters (ViSession instrumentHandle,
 													ViBoolean isFirstStep,
