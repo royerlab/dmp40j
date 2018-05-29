@@ -24,6 +24,19 @@ public class DMP40J {
 
     public final static int MAX_SEGMENTS = 40;
 
+    public final static int TLDFMX_Z4_AMPL_POS = 0;
+    public final static int TLDFMX_Z5_AMPL_POS = 1;
+    public final static int TLDFMX_Z6_AMPL_POS = 2;
+    public final static int TLDFMX_Z7_AMPL_POS = 3;
+    public final static int TLDFMX_Z8_AMPL_POS = 4;
+    public final static int TLDFMX_Z9_AMPL_POS = 5;
+    public final static int TLDFMX_Z10_AMPL_POS = 6;
+    public final static int TLDFMX_Z11_AMPL_POS = 7;
+    public final static int TLDFMX_Z12_AMPL_POS = 8;
+    public final static int TLDFMX_Z13_AMPL_POS = 9;
+    public final static int TLDFMX_Z14_AMPL_POS = 10;
+    public final static int TLDFMX_Z15_AMPL_POS = 11;
+
     public static String translateStatus(long status) {
         switch ((int) status){
 

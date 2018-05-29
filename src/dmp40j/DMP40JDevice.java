@@ -48,6 +48,8 @@ public class DMP40JDevice implements AutoCloseable {
     private double voltageTiltCommon;
     private Integer instrumentExtensionHandle;
 
+    private double[] currentMirrorShape = new double[MAX_SEGMENTS];
+
 
     public DMP40JDevice(String serialNumber) {
         this.serialNumber = serialNumber;
@@ -309,24 +311,33 @@ public class DMP40JDevice implements AutoCloseable {
         }
     }
 
+    private static void doublePointerToDoubleArray(Pointer<Double> pointer, double[] array) {
+        for (int i = 0; i < array.length && i < MAX_SEGMENTS; i++) {
+            array[i] = pointer.get(i);
+        }
+    }
+
+
     private boolean setRawMirrorShapeVector(Pointer<Double> segmentVoltages) {
         synchronized (lock) {
 
             long err = TLDFM_64Library.TLDFM_set_segment_voltages(instrumentHandle, segmentVoltages);
             System.out.println("\nSet voltages status: " + translateStatus(err));
+            if (err == 0) {
+                doublePointerToDoubleArray(segmentVoltages, currentMirrorShape);
+            }
             return err == 0;
         }
     }
 
     public boolean setZernikeFactors(double[] zernikeFactors) {
-
         Pointer<Double> zernikeFactorsPointer = Pointer.allocateDoubles(zernikeFactorCount);
         doubleArrayToDoublePointer(zernikeFactors, zernikeFactorsPointer);
 
         Pointer<Double> segmentVoltagesPointer = Pointer.allocateDoubles(MAX_SEGMENTS);
         synchronized (lock) {
-
-            long err = TLDFMX_calculate_zernike_pattern(instrumentExtensionHandle, zernikeFactorCount, zernikeFactorsPointer, segmentVoltagesPointer);
+            // documentation located here:
+            long err = TLDFMX_calculate_zernike_pattern(instrumentExtensionHandle, 0xFFFFFFFF, zernikeFactorsPointer, segmentVoltagesPointer);
             System.out.println("\nCalculate zernike pattern status: " + translateStatus(err));
         }
         boolean result = setRawMirrorShapeVector(segmentVoltagesPointer);
@@ -336,10 +347,8 @@ public class DMP40JDevice implements AutoCloseable {
         return result;
     }
 
+
     public boolean setSingleZernikeFactor(TLDFMX_64Library.TLDFMX_zernike_flag_t flag, double zernikeFactor) {
-
-
-
         Pointer<Double> segmentVoltagesPointer = Pointer.allocateDoubles(MAX_SEGMENTS);
         synchronized (lock) {
 
@@ -362,5 +371,11 @@ public class DMP40JDevice implements AutoCloseable {
 
             return err == VI_SUCCESS;
         }
+    }
+
+    public double[] getMirrorShape() {
+        double[] result = new double[currentMirrorShape.length];
+        System.arraycopy(currentMirrorShape, 0, result, 0, result.length);
+        return result;
     }
 }
