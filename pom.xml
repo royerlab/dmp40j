@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.clearcontrol</groupId>
+		<artifactId>ClearParentPom</artifactId>
+		<version>0.9.1</version>
+		<relativePath />
+	</parent>
+
+	<groupId>net.clearcontrol</groupId>
+	<artifactId>dmp40j</artifactId>
+	<version>0.2.0</version>
+
+	<name>dmp40j</name>
+	<description>dmp40j</description>
+	<url>https://github.com/ClearControl/dmp40j</url>
+	<inceptionYear>2018</inceptionYear>
+	<organization>
+		<name>ClearControl</name>
+		<url>http://clearcontrol.net</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>Simplified BSD License</name>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>haesleinhuepf</id>
+			<name>Robert Haase</name>
+			<url>https://haesleinhuepf.net</url>
+			<organization>MPI CBG</organization>
+			<roles>
+				<role>developer</role>
+				<role>debugger</role>
+				<role>reviewer</role>
+				<role>support</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Loic A. Royer</name>
+			<organization>CZ Biohub</organization>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<scm>
+		<connection>scm:git:git://github.com/ClearControl/dmp40j</connection>
+        <developerConnection>scm:git:git@github.com/ClearControl/dmp40j</developerConnection>
+        <tag>HEAD</tag>
+		<url>https://github.com/ClearControl/dmp40j</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/ClearControl/dmp40j/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>None</system>
+	</ciManagement>
+
+	<properties>
+		<package-name>net.clearcontrol</package-name>
+		<imagej.app.directory>C:/Programs/XWingFiji.app/</imagej.app.directory>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.nativelibs4java</groupId>
+			<artifactId>bridj</artifactId>
+			<version>0.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
+	</dependencies>
+
+    <repositories>
+        <repository>
+            <id>hslh</id>
+            <url>http://dl.bintray.com/haesleinhuepf/snapshots</url>
+        </repository>
+    </repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>bintray-haesleinhuepf-snapshots</id>
+			<name>bintray-snapshots</name>
+			<url>https://api.bintray.com/maven/haesleinhuepf/snapshots/dmp40j/;publish=1</url>
+		</repository>
+	</distributionManagement>
+
+
+</project>

@@ -3,7 +3,6 @@ package dmp40j.bindings.demo;
 import dmp40j.bindings.TLDFM_64Library;
 import org.bridj.CLong;
 import org.bridj.Pointer;
-import org.junit.experimental.theories.PotentialAssignment;
 
 import java.awt.*;
 import java.util.Arrays;
